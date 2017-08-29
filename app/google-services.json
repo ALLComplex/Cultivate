@@ -1,0 +1,58 @@
+{
+  "project_info": {
+    "project_number": "832007760522",
+    "firebase_url": "https://cultivate-72f10.firebaseio.com",
+    "project_id": "cultivate-72f10",
+    "storage_bucket": "cultivate-72f10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832007760522:android:34bd14353a0a25b5",
+        "android_client_info": {
+          "package_name": "com.cultivate.juniordesign.cultivate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832007760522-g95if0qls1l29q93qp8nba26b7i1ajr8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cultivate.juniordesign.cultivate",
+            "certificate_hash": "11ca02c3b21059abbe9d5adf549c02f1ac4cc410"
+          }
+        },
+        {
+          "client_id": "832007760522-96m86cmfevd5pg1evivgs6ogq0qigous.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3YymALr1ht4oAhga0HAIKoV9BkP0gZHU"
+        },
+        {
+          "current_key": "AIzaSyBlGrqQOtYxaws-HVm0vnb_XXt2K0yt8mU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "832007760522-96m86cmfevd5pg1evivgs6ogq0qigous.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
