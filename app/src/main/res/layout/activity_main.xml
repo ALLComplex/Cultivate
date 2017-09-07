@@ -8,9 +8,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="259dp"
+        android:layout_width="0dp"
         android:layout_height="149dp"
         app:srcCompat="@drawable/cultivatelogo"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="64dp" />
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
 </android.support.constraint.ConstraintLayout>
