@@ -34,6 +34,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +52,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference mDatabase;
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -81,6 +87,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -171,7 +178,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-    public void createAccount(String email, String password) {
+    public void createAccount(final String email, String password) {
         if (isEmailValid(email) && isPasswordValid(password)) {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -187,6 +194,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 Toast.makeText(LoginActivity.this, "nope",
                                         Toast.LENGTH_SHORT).show();
                                 return;
+                            } else {
+                                Account user = new Account(new String(email));
+                                mDatabase.child("users").child(email.replace('.', '_')).setValue(user);
                             }
 
                             launch();
@@ -214,6 +224,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                         Toast.LENGTH_SHORT).show();
                                 return;
 
+                            } else {
+                                String xemail = mEmailView.getText().toString();
+                                mDatabase.child("users").orderByChild("email").equalTo(new String(xemail)).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        Account user = dataSnapshot.getChildren().iterator().next().getValue(Account.class);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+                                    }
+                                });
                             }
 
                             launch();
