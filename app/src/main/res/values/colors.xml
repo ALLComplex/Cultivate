@@ -3,4 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="that_green">#55c523</color>
+    <color name="that_logo_brown">#b45f06</color>
+    <color name="that_logo_goldenyellow">#fdda04</color>
 </resources>
