@@ -29,5 +29,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(stub);
     }
 
+    public void goToEvent(View v) {
+        Intent event = new Intent(this, EventActivity.class);
+        startActivity(event);
+    }
+
 
 }
