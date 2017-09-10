@@ -34,6 +34,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +51,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseDatabase mDatabase;
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -81,6 +86,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -171,7 +177,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-    public void createAccount(String email, String password) {
+    public void createAccount(final String email, String password) {
         if (isEmailValid(email) && isPasswordValid(password)) {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -187,9 +193,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 Toast.makeText(LoginActivity.this, "nope",
                                         Toast.LENGTH_SHORT).show();
                                 return;
+                            } else {
+                                Account user = new Account(new String(email));
+                                mDatabase.getReference("users").child(email.replace('.', '_')).setValue(user);
+                                launch(user);
                             }
 
-                            launch();
+
                             // ...
                         }
                     });
@@ -197,6 +207,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     public void signIn(String email, String password) {
+        if (email.isEmpty() && password.isEmpty()) {
+            email = "eth@gmail.com";
+            password = "pppppp";
+        }
         if (isEmailValid(email) && isPasswordValid(password)) {
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -214,17 +228,30 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                         Toast.LENGTH_SHORT).show();
                                 return;
 
+                            } else {
+                                String xemail = mEmailView.getText().toString().replace('.', '_');
+                                mDatabase.getReference("users/"+xemail).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        Account user = dataSnapshot.getValue(Account.class);
+                                        launch(user);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+                                    }
+                                });
                             }
 
-                            launch();
-                            // ...
+
                         }
                     });
         }
     }
 
-    public void launch() {
+    public void launch(Account user) {
         Intent lol = new Intent(this, MainActivity.class);
+        lol.putExtra(user.email.toString(), user);
         startActivity(lol);
     }
 
@@ -308,6 +335,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             focusView = mEmailView;
             cancel = true;
         }
+
+        if (email.isEmpty() && password.isEmpty())
+            cancel = false;
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
