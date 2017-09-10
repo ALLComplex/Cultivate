@@ -25,22 +25,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StubActivity"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.inte7nt.category.LAUNCHER" />
-            </intent-filter>
+            android:name=".StubActivity">
         </activity>
         <activity
-            android:name=".EventActivity"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.inte7nt.category.LAUNCHER" />
-            </intent-filter>
+            android:name=".EventActivity">
+        </activity>
+        <activity
+            android:name=".GroupActivity">
+        </activity>
+        <activity
+            android:name=".ProfileActivity">
         </activity>
         <activity android:name=".MainActivity"></activity>
     </application>

@@ -34,5 +34,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(event);
     }
 
+    public void goToProfile(View v) {
+        Intent profile = new Intent(this, ProfileActivity.class);
+        startActivity(profile);
+    }
+
+    public void goToGroup(View v) {
+        Intent group = new Intent(this, GroupActivity.class);
+        startActivity(group);
+    }
+
 
 }
