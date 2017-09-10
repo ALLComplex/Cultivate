@@ -9,12 +9,10 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="-8dp"
+        android:layout_height="56dp"
         android:background="@color/that_green"
         android:elevation="0dp"
+        android:hapticFeedbackEnabled="true"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,6 +22,20 @@
         app:logo="@mipmap/ic_launcher"
         app:navigationIcon="@drawable/ic_action_name"
         app:title="Stub Page" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/that_green"
+        app:srcCompat="@drawable/ic_home"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        android:onClick="goToHome"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -42,7 +54,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintHorizontal_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -108,6 +122,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
+
         </LinearLayout>
     </ScrollView>
 
