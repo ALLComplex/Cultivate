@@ -23,10 +23,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToStub(View v){
-        Snackbar mySnackbar = Snackbar.make((findViewById(R.id.home_layout)), "Can't go to the Stub Page", 10000);
-        mySnackbar.show();
-        //Intent stub = new Intent(this, StubActivity.class);
-        //startActivity(stub);
+//        Snackbar mySnackbar = Snackbar.make((findViewById(R.id.home_layout)), "Can't go to the Stub Page", 10000);
+//        mySnackbar.show();
+        Intent stub = new Intent(this, StubActivity.class);
+        startActivity(stub);
+    }
+
+    public void goToEvent(View v) {
+        Intent event = new Intent(this, EventActivity.class);
+        startActivity(event);
+    }
+
+    public void goToProfile(View v) {
+        Intent profile = new Intent(this, ProfileActivity.class);
+        startActivity(profile);
+    }
+
+    public void goToGroup(View v) {
+        Intent group = new Intent(this, GroupActivity.class);
+        startActivity(group);
     }
 
 

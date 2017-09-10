@@ -24,6 +24,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".StubActivity">
+        </activity>
+        <activity
+            android:name=".EventActivity">
+        </activity>
+        <activity
+            android:name=".GroupActivity">
+        </activity>
+        <activity
+            android:name=".ProfileActivity">
+        </activity>
         <activity android:name=".MainActivity"></activity>
     </application>
 
