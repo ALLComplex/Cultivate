@@ -9,7 +9,7 @@ import android.view.View;
  * Created by Paul on 9/10/2017.
  */
 
-public class GroupActivity extends AppCompatActivity {
+public class GroupActivity extends AppCompatActivity {   
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
