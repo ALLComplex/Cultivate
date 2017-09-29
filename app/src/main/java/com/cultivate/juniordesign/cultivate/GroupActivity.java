@@ -21,6 +21,7 @@ public class GroupActivity extends AppCompatActivity {
 
     public void goToHome(View v) {
         Intent event = new Intent(this, MainActivity.class);
+        event.putExtra("uid", uid);
         startActivity(event);
     }
 }
