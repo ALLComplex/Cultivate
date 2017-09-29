@@ -189,7 +189,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 return;
                             }
 
-                            launch();
+                            launch(0);
                             // ...
                         }
                     });
@@ -215,17 +215,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 return;
 
                             }
-
-                            launch();
+                            int uid = 0;
+                            launch(uid);
                             // ...
                         }
                     });
         }
     }
 
-    public void launch() {
-        Intent lol = new Intent(this, MainActivity.class);
-        startActivity(lol);
+    public void launch(int uid) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("uid", uid);
+        startActivity(intent);
     }
 
     private void populateAutoComplete() {

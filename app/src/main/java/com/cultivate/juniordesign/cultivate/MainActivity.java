@@ -11,13 +11,14 @@ import static android.R.attr.duration;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    private int uid = 0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        uid = getIntent().getIntExtra("uid", 0);
         Snackbar mySnackbar = Snackbar.make((findViewById(R.id.home_layout)), "Welcome to the Homepage", 1000);
         mySnackbar.show();
     }
@@ -43,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         Intent group = new Intent(this, GroupActivity.class);
         startActivity(group);
     }
-
-
+    /*
+    goes to the login screen; clears user data
+     */
+    public void goToLogout(View v) {
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+    }
 }

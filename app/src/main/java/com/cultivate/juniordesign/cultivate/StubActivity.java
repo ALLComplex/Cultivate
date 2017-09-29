@@ -7,10 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 
 public class StubActivity extends AppCompatActivity {
-
+    private int uid = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        uid = getIntent().getIntExtra("uid", 0);
         setContentView(R.layout.activity_stub);
     }
     public void goToHome(View v) {
