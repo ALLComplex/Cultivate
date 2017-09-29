@@ -42,6 +42,8 @@
         <activity
             android:name=".RegistrationActivity">
         </activity>
+        <activity android:name=".CreateGroupActivity"></activity>
+        <activity android:name=".JoinGroupActivity"></activity>
     </application>
 
 </manifest>

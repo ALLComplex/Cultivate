@@ -140,8 +140,8 @@
         android:id="@+id/space1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:layout_toRightOf="@+id/title"
         android:layout_alignParentTop="true" />
 

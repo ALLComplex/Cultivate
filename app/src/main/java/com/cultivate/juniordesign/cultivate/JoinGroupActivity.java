@@ -15,14 +15,14 @@ import android.widget.Toast;
  * Created by Paul on 9/10/2017.
  */
 
-public class GroupActivity extends AppCompatActivity {   
+public class JoinGroupActivity extends AppCompatActivity {
     private String uid = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         uid = getIntent().getStringExtra("uid");
-        setContentView(R.layout.group_stub);
+        setContentView(R.layout.join_group_layout);
     }
 
     public void goToHome(View v) {
@@ -33,7 +33,7 @@ public class GroupActivity extends AppCompatActivity {
 
     public void openHamburgerBar(View v) {
         // get a reference to the already created main layout
-        ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.group_layout);
+        ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.join_group_layout);
 
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -73,18 +73,6 @@ public class GroupActivity extends AppCompatActivity {
         startActivity(group);
     }
 
-    public void goToCreateGroup(View v) {
-        Intent group = new Intent(this, CreateGroupActivity.class);
-        group.putExtra("uid", uid);
-        startActivity(group);
-    }
-
-    public void goToJoinGroup(View v) {
-        Intent group = new Intent(this, JoinGroupActivity.class);
-        group.putExtra("uid", uid);
-        startActivity(group);
-    }
-
     /*
     goes to the login screen; clears user data
      */
@@ -94,6 +82,6 @@ public class GroupActivity extends AppCompatActivity {
     }
 
     public void notImplemented(View v) {
-        Toast.makeText(GroupActivity.this, "This feature is not yet implemented", Toast.LENGTH_SHORT).show();
+        Toast.makeText(JoinGroupActivity.this, "This feature is not yet implemented", Toast.LENGTH_SHORT).show();
     }
 }
