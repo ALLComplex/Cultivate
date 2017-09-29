@@ -126,7 +126,7 @@ public class RegistrationActivity extends AppCompatActivity{
                         }
                     });
         }
-        launch(v);
+        launch(v, email);
     }
 
     private void showProgress(final boolean show) {
@@ -171,8 +171,9 @@ public class RegistrationActivity extends AppCompatActivity{
         return password.length() > 4;
     }
 
-    public void launch(View v){
+    public void launch(View v, String uid){
         Intent login = new Intent(this, LoginActivity.class);
+        login.putExtra("uid", uid);
         startActivity(login);
     }
 

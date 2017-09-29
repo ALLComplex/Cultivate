@@ -9,16 +9,19 @@ import android.view.View;
  * Created by Paul on 9/10/2017.
  */
 
-public class GroupActivity extends AppCompatActivity {   
+public class GroupActivity extends AppCompatActivity {
+    private String uid = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        uid = getIntent().getStringExtra("uid");
         setContentView(R.layout.group_stub);
     }
 
     public void goToHome(View v) {
         Intent event = new Intent(this, MainActivity.class);
+        event.putExtra("uid", uid);
         startActivity(event);
     }
 }
