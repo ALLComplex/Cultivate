@@ -29,7 +29,7 @@
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:fontFamily="casual"
-        android:text="Cultivate was an app designed by five Georgia Tech students: Cathy Lefebvre, Emily Huskins, Forrest Bengtson, Paul Estrada and Henry Leung for their Junior Design project. Cultivate is meant to help collegiate organizations keep better track of attendance and other important things."
+        android:text="Cultivate was an app designed for a Junior Design project by five Georgia Tech students: Cathy Lefebvre, Emily Huskins, Forrest Bengtson, Paul Estrada and Henry Leung. Cultivate is meant to help collegiate organizations keep better track of attendance and other important things."
         android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="22dp" />

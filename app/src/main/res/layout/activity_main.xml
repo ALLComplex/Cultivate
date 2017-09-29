@@ -89,5 +89,16 @@
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent" />
 
+    <ImageView
+        android:id="@+id/invisibleButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintLeft_toLeftOf="@+id/home_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:color/transparent"
+        android:onClick="openHamburgerBar"/>
+
 
 </android.support.constraint.ConstraintLayout>
