@@ -19,10 +19,11 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 
 public class ProfileActivity extends AppCompatActivity {
-
+    private String uid = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        uid = getIntent().getStringExtra("uid");
         setContentView(R.layout.profile_stub);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String email = mAuth.getCurrentUser().getEmail();
@@ -32,6 +33,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void goToHome(View v) {
         Intent event = new Intent(this, MainActivity.class);
+        event.putExtra("uid", uid);
         startActivity(event);
     }
 

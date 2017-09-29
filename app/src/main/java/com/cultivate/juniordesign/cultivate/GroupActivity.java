@@ -16,15 +16,18 @@ import android.widget.Toast;
  */
 
 public class GroupActivity extends AppCompatActivity {   
+    private String uid = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        uid = getIntent().getStringExtra("uid");
         setContentView(R.layout.group_stub);
     }
 
     public void goToHome(View v) {
         Intent event = new Intent(this, MainActivity.class);
+        event.putExtra("uid", uid);
         startActivity(event);
     }
 
@@ -48,21 +51,25 @@ public class GroupActivity extends AppCompatActivity {
 
     public void goToStub(View v) {
         Intent stub = new Intent(this, StubActivity.class);
+        stub.putExtra("uid", uid);
         startActivity(stub);
     }
 
     public void goToEvent(View v) {
-        Intent event = new Intent(this, EventActivity.class);
+        Intent event = new Intent(this, EventActivity.class)
+        event.putExtra("uid", uid);
         startActivity(event);
     }
 
     public void goToProfile(View v) {
         Intent profile = new Intent(this, ProfileActivity.class);
+        profile.putExtra("uid", uid);
         startActivity(profile);
     }
 
     public void goToGroup(View v) {
         Intent group = new Intent(this, GroupActivity.class);
+        group.putExtra("uid", uid);
         startActivity(group);
     }
 

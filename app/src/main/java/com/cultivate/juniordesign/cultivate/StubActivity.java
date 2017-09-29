@@ -13,14 +13,16 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 
 public class StubActivity extends AppCompatActivity {
-
+    private String uid = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        uid = getIntent().getStringExtra("uid");
         setContentView(R.layout.activity_stub);
     }
     public void goToHome(View v) {
         Intent event = new Intent(this, MainActivity.class);
+        event.putExtra("uid", uid);
         startActivity(event);
     }
 
