@@ -9,27 +9,29 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:id="@+id/activity_login"
-    tools:context="com.cultivate.juniordesign.cultivate.LoginActivity">
+    tools:context="com.cultivate.juniordesign.cultivate.RegistrationActivity">
 
 
     <TextView
-        android:id="@+id/welcome"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:fontFamily="casual"
-        android:text="Welcome to"
+        android:text="Account Creation for"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="36sp"
+        android:textSize="28sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
-        android:id="@+id/login_progress"
+        android:id="@+id/registration_progress"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -44,38 +46,22 @@
         tools:layout_constraintTop_creator="1" />
 
     <ImageView
-        android:id="@+id/cultivateImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/cultivatelogo"
+        android:layout_width="261dp"
+        android:layout_height="67dp"
         app:srcCompat="@drawable/cultivatelogo"
-        android:layout_marginTop="0dp"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        style="@android:style/Widget.DeviceDefault.ImageButton"
-        android:layout_width="45dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="false"
-        android:backgroundTint="@android:color/transparent"
-        android:elevation="0dp"
-        android:onClick="popUpInformation"
-        android:scaleType="centerCrop"
-        android:tint="@color/that_green"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/welcome"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_dialog_info" />
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="0dp"
+        tools:layout_editor_absoluteX="70dp" />
 
     <ScrollView
-        android:id="@+id/login_form"
+        android:id="@+id/registration_form"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
@@ -83,17 +69,18 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:fillViewport="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cultivatelogo"
+        app:layout_constraintVertical_bias="0.0"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/cultivateImage">
+        tools:layout_constraintTop_creator="1">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/email_login_form"
@@ -107,7 +94,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
+                app:layout_constraintGuide_percent="0.5"
+                tools:layout_editor_absoluteY="240dp"
+                tools:layout_editor_absoluteX="192dp" />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="casual"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Name"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                android:layout_marginStart="8dp" />
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:ems="10"
+                android:fontFamily="casual"
+                android:inputType="phone"
+                android:hint="Phone #"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/name" />
 
             <AutoCompleteTextView
                 android:id="@+id/email"
@@ -115,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="6dp"
                 android:fontFamily="casual"
                 android:hint="E-mail"
                 android:inputType="textEmailAddress"
@@ -124,11 +147,13 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:layout_conversion_absoluteHeight="42dp"
                 tools:layout_conversion_absoluteWidth="336dp"
                 tools:layout_conversion_absoluteX="24dp"
-                tools:layout_conversion_absoluteY="35dp" />
+                tools:layout_conversion_absoluteY="35dp"
+                app:layout_constraintTop_toBottomOf="@+id/phone"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
 
 
             <EditText
@@ -153,70 +178,47 @@
                 tools:layout_conversion_absoluteHeight="42dp"
                 tools:layout_conversion_absoluteWidth="336dp"
                 tools:layout_conversion_absoluteX="24dp"
-                tools:layout_conversion_absoluteY="89dp" />
+                tools:layout_conversion_absoluteY="89dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
 
 
             <!-- Login progress -->
 
+            <Button
+                android:id="@+id/Register"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:onClick="attemptCreateAccount"
+                android:text="Register Account"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/password"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintLeft_toLeftOf="parent" />
 
             <Button
-                android:id="@+id/email_sign_in_button"
+                android:id="@+id/cancel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="casual"
-                android:text="@string/action_sign_in"
+                android:text="Cancel"
+                android:onClick="launch"
+                android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/password"
-                tools:layout_conversion_absoluteHeight="48dp"
-                tools:layout_conversion_absoluteWidth="170dp"
-                tools:layout_conversion_absoluteX="24dp"
-                tools:layout_conversion_absoluteY="132dp"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintRight_toRightOf="parent" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="6dp"
-                android:fontFamily="casual"
-                android:text="or"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email_sign_in_button" />
-
-            <Button
-                android:id="@+id/Register"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="6dp"
-                android:fontFamily="casual"
-                android:text="Create a new account"
-                android:textAllCaps="false"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:onClick="goToAccountCreation"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5"
-                tools:layout_conversion_absoluteHeight="48dp"
-                tools:layout_conversion_absoluteWidth="166dp"
-                tools:layout_conversion_absoluteX="194dp"
-                tools:layout_conversion_absoluteY="132dp" />
+                app:layout_constraintTop_toBottomOf="@+id/Register" />
 
 
         </android.support.constraint.ConstraintLayout>
