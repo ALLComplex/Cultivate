@@ -171,7 +171,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-    public void createAccount(String email, String password) {
+    public void createAccount(final String email, String password) {
         if (isEmailValid(email) && isPasswordValid(password)) {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -189,14 +189,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 return;
                             }
 
-                            launch(0);
+                            launch(email);
                             // ...
                         }
                     });
         }
     }
 
-    public void signIn(String email, String password) {
+    public void signIn(final String email, String password) {
         if (isEmailValid(email) && isPasswordValid(password)) {
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -215,7 +215,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 return;
 
                             }
-                            int uid = 0;
+                            String uid = email;
                             launch(uid);
                             // ...
                         }
@@ -223,7 +223,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-    public void launch(int uid) {
+    public void launch(String uid) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("uid", uid);
         startActivity(intent);

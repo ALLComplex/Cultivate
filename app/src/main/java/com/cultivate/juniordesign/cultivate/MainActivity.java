@@ -11,14 +11,14 @@ import static android.R.attr.duration;
 
 
 public class MainActivity extends AppCompatActivity {
-    private int uid = 0;
+    private String uid = null;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        uid = getIntent().getIntExtra("uid", 0);
+        uid = getIntent().getStringExtra("uid");
         Snackbar mySnackbar = Snackbar.make((findViewById(R.id.home_layout)), "Welcome to the Homepage", 1000);
         mySnackbar.show();
     }
