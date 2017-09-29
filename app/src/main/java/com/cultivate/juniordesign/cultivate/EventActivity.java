@@ -21,7 +21,16 @@ public class EventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         uid = getIntent().getStringExtra("uid");
-        setContentView(R.layout.event_stub);
+        setContentView(R.layout.activity_event);
+    }
+
+    /**
+     * Queries the database to determine if the user is an admin for the group this event is a part of.
+     * If so, return true
+     * @return boolean whether or not the user is an admin
+     */
+    private boolean checkIfAdmin() {
+        return false;
     }
 
     public void goToHome(View v) {

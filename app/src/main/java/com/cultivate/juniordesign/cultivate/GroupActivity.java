@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -17,12 +18,26 @@ import android.widget.Toast;
 
 public class GroupActivity extends AppCompatActivity {   
     private String uid = null;
+    private boolean isAdmin = false;
+    int output = View.VISIBLE;
+    TextView adminTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         uid = getIntent().getStringExtra("uid");
-        setContentView(R.layout.group_stub);
+        setContentView(R.layout.activity_group);
+        isAdmin = checkIfAdmin();
+        adminTextView  = (TextView)findViewById(R.id.adminTextView);
+        adminTextView.setVisibility(output);
+    }
+
+    /**
+     * Queries the database to determine if the user is an admin for this group. If so, return true
+     * return boolean whether or not the user is an admin
+     */
+    private boolean checkIfAdmin() {
+        return true;
     }
 
     public void goToHome(View v) {
