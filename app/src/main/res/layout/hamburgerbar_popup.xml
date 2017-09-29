@@ -107,7 +107,7 @@
         android:fontFamily="casual"
         android:text="Log Out"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:onClick="notImplemented"
+        android:onClick="goToLogout"
         android:textSize="24sp" />
 
     <TextView

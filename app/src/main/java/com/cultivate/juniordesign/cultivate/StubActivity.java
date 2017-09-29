@@ -68,6 +68,14 @@ public class StubActivity extends AppCompatActivity {
         startActivity(group);
     }
 
+    /*
+    goes to the login screen; clears user data
+     */
+    public void goToLogout(View v) {
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+    }
+
     public void notImplemented(View v) {
         Toast.makeText(StubActivity.this, "This feature is not yet implemented", Toast.LENGTH_SHORT).show();
     }
