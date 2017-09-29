@@ -62,7 +62,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void goToEvent(View v) {
-        Intent event = new Intent(this, EventActivity.class)
+        Intent event = new Intent(this, EventActivity.class);
         event.putExtra("uid", uid);
         startActivity(event);
     }

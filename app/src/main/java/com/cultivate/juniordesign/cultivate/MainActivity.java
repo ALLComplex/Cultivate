@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         mySnackbar.show();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-        Snackbar email = Snackbar.make((findViewById(R.id.home_layout)),"e-mail: " + user.getEmail(), 10000);
+        Snackbar email = Snackbar.make((findViewById(R.id.home_layout)), "e-mail: " + user.getEmail(), 10000);
         email.show();
     }
 
@@ -48,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
 
         // show the popup window
-        popupWindow.showAtLocation(mainLayout, Gravity.TOP|Gravity.LEFT, 0, 0);
+        popupWindow.showAtLocation(mainLayout, Gravity.TOP | Gravity.LEFT, 0, 0);
     }
 
-    public void goToStub(View v){
+    public void goToStub(View v) {
 //        Snackbar mySnackbar = Snackbar.make((findViewById(R.id.home_layout)), "Can't go to the Stub Page", 10000);
 //        mySnackbar.show();
         Intent stub = new Intent(this, StubActivity.class);
@@ -76,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
         group.putExtra("uid", uid);
         startActivity(group);
     }
-  
+
     public void notImplemented(View v) {
-        Toast.makeText(MainActivity.this, "This feature is not yet implemented",Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, "This feature is not yet implemented", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -89,3 +89,4 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
     }
+}
