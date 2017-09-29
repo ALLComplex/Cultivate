@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/event_layout"
+    android:id="@+id/group_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false">
@@ -11,9 +11,11 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="56dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="-8dp"
         android:background="@color/that_green"
         android:elevation="0dp"
-        android:hapticFeedbackEnabled="true"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintHorizontal_bias="0.0"
@@ -58,7 +60,7 @@
         android:layout_marginTop="8dp"
         android:layout_weight="0.69"
         android:fontFamily="casual"
-        android:text="Event Stub Page"
+        android:text="Group Stub Page"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="36sp"
@@ -66,25 +68,47 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+    <TextView
+        android:id="@+id/adminTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="0.69"
+        android:fontFamily="casual"
+        android:text="You are an admin!!!"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintHorizontal_bias="0.0"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
     <ScrollView
+        android:id="@+id/tempId"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp">
+        app:layout_constraintTop_toBottomOf="@+id/adminTextView"
+        app:layout_constraintVertical_bias="0.0">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -109,7 +133,7 @@
                 android:textAlignment="center" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/words"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="8dp"
@@ -122,7 +146,7 @@
                 android:background="?attr/colorControlHighlight"
                 android:fontFamily="casual"
                 android:lineSpacingExtra="10sp"
-                android:text="This is the event text. There will be no scrolling."
+                android:text="This is the group text. There will be no scrolling."
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_green_light"
                 android:textSize="36sp"
@@ -135,7 +159,33 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
+            <Button
+                android:id="@+id/createEventButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="goToEvent"
+                android:text="Create a new Event"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/words"/>
+            <Button
+                android:id="@+id/groupEvents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="goToEvent"
+                android:text="show group Events"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/createEventButton"/>
         </LinearLayout>
+
+
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
