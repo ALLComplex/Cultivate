@@ -128,7 +128,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-    public void signIn(final String email, String password) {
+    public void signIn(String email, String password) {
         if (isEmailValid(email) && isPasswordValid(password)) {
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -148,17 +148,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                             }
 
-                            launch(email);
+                            launch();
                             // ...
                         }
                     });
         }
     }
 
-    public void launch(String uid) {
-        Intent i = new Intent(this, MainActivity.class);
-        i.putExtra("uid", uid);
-        startActivity(i);
+    public void launch() {
+        Intent lol = new Intent(this, MainActivity.class);
+        startActivity(lol);
     }
 
     private void populateAutoComplete() {
