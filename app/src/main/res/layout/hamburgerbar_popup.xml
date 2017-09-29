@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/that_green">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:fontFamily="casual"
+        android:text="Quick Tools"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_action_name"
+        android:layout_alignTop="@+id/space2"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/groupPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/title"
+        android:fontFamily="casual"
+        android:text="Group Page"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:onClick="goToGroup"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/moreGroups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/groupPage"
+        android:onClick="goToGroup"
+        android:fontFamily="casual"
+        android:text="More Groups"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/Calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/moreGroups"
+        android:fontFamily="casual"
+        android:text="Calendar"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:onClick="notImplemented"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/myProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Calendar"
+        android:onClick="goToProfile"
+        android:fontFamily="casual"
+        android:text="My Profile"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/myAttendance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/myProfile"
+        android:fontFamily="casual"
+        android:text="My Attendance"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:onClick="notImplemented"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/logOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/myAttendance"
+        android:fontFamily="casual"
+        android:text="Log Out"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:onClick="notImplemented"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/logOut"
+        android:fontFamily="casual"
+        android:text="Settings"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:onClick="notImplemented"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/settings"
+        android:fontFamily="casual"
+        android:text="Feedback and Support"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:onClick="notImplemented"
+        android:textSize="18sp" />
+
+    <Space
+        android:id="@+id/space1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_toRightOf="@+id/title"
+        android:layout_alignParentTop="true" />
+
+    <Space
+        android:id="@+id/space2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_toRightOf="@+id/space1"
+        android:layout_alignParentTop="true" />
+
+    <Space
+        android:id="@+id/space3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="55dp"
+        android:layout_toRightOf="@+id/space1" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/space3"
+        app:srcCompat="@color/that_logo_brown" />
+
+</RelativeLayout>
