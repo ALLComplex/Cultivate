@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.*;
 import android.content.Intent;
 
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.FirebaseAuth;
+
 import static android.R.attr.duration;
 
 
@@ -20,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Snackbar mySnackbar = Snackbar.make((findViewById(R.id.home_layout)), "Welcome to the Homepage", 1000);
         mySnackbar.show();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        Snackbar email = Snackbar.make((findViewById(R.id.home_layout)),"e-mail: " + user.getEmail(), 10000);
+        email.show();
     }
 
     public void goToStub(View v){

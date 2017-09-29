@@ -93,7 +93,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.69"
                 android:fontFamily="casual"
-                android:text="Text about stuff: "
                 android:textAlignment="center" />
 
             <TextView
