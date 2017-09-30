@@ -28,8 +28,8 @@ public class GroupActivity extends AppCompatActivity {
         uid = getIntent().getStringExtra("uid");
         setContentView(R.layout.activity_group);
         isAdmin = checkIfAdmin();
-        adminTextView  = (TextView)findViewById(R.id.adminTextView);
-        adminTextView.setVisibility(output);
+        //TextView adminTextView  = (TextView)findViewById(R.id.adminTextView);
+        //adminTextView.setVisibility(output);
     }
 
     /**
