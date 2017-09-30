@@ -74,7 +74,7 @@ public class CreateGroupActivity extends AppCompatActivity {
     }
 
     /*
-    goes to the login screen; clears user data
+    goes to the login screen; clears user data  
      */
     public void goToLogout(View v) {
         Intent i = new Intent(this, LoginActivity.class);

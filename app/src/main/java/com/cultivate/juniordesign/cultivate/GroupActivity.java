@@ -22,7 +22,7 @@ public class GroupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         uid = getIntent().getStringExtra("uid");
-        setContentView(R.layout.group_stub);
+        setContentView(R.layout.activity_group);
     }
 
     public void goToHome(View v) {
