@@ -26,6 +26,7 @@
         app:navigationIcon="@drawable/ic_action_name"
         app:title="More Groups" />
 
+
     <ImageView
         android:id="@+id/invisibleButton"
         android:layout_width="30dp"
@@ -144,6 +145,7 @@
                 android:fontFamily="casual"
                 android:onClick="goToCreateGroup"/>
         </LinearLayout>
+
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
