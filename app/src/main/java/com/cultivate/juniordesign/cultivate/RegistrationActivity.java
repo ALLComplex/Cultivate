@@ -135,7 +135,6 @@ public class RegistrationActivity extends AppCompatActivity{
                     });
         }
 
-    }
 
     private void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
@@ -179,11 +178,11 @@ public class RegistrationActivity extends AppCompatActivity{
         return password.length() > 4;
     }
 
+
     public void launch(Account user){
         Intent login = new Intent(this, LoginActivity.class);
         login.putExtra("curUser", user);
         startActivity(login);
     }
-
 
 }

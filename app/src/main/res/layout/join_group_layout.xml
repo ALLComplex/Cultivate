@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/profile_layout"
+    android:id="@+id/join_group_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false">
@@ -10,7 +10,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="56dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginTop="-8dp"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:logo="@mipmap/ic_launcher"
         app:navigationIcon="@drawable/ic_action_name"
-        app:title="My Profile" />
+        app:title="Stub Page" />
 
     <ImageView
         android:id="@+id/invisibleButton"
@@ -60,10 +60,10 @@
         android:layout_marginTop="8dp"
         android:layout_weight="0.69"
         android:fontFamily="casual"
-        android:text="My Profile"
+        android:text="Join an Exsiting Group"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="36sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -99,16 +99,20 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/textView3"
+            <SearchView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.69"
+                android:layout_height="match_parent"
+                android:layout_weight="0.69" />
+
+            <Button
+                android:id="@+id/button_group_create"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:fontFamily="casual"
-                android:textAlignment="center"
-                android:textSize="24sp" />
+                android:text="Join Group"
+                android:textAllCaps="false" />
+
 
         </LinearLayout>
     </ScrollView>
-
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>

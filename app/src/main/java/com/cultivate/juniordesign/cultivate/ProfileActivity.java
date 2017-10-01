@@ -28,8 +28,10 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.profile_stub);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String email = mAuth.getCurrentUser().getEmail();
-        TextView view= (TextView) findViewById(R.id.textView3);
-        view.setText(email);
+
+        TextView view = (TextView) findViewById(R.id.textView3);
+        view.setText("Email: " + email);
+
     }
 
     public void goToHome(Account user) {
