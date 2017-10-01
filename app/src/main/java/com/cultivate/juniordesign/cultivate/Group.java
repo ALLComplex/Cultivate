@@ -3,8 +3,8 @@ package com.cultivate.juniordesign.cultivate;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by emilyhuskins on 9/29/17.
@@ -15,14 +15,18 @@ public class Group implements Parcelable{
 
     String groupName;
     String location;
-    List<String> groupMembers = new ArrayList<>();
-    List<String> groupAdmins = new ArrayList<>();
-    List<String> events = new ArrayList<>();
+    Map<String, Boolean> groupMembers;
+    Map<String, Boolean> groupAdmins;
+    Map<String, Boolean> events;
 
     public Group(String mgroupName, String mlocation, String admin) {
         groupName = mgroupName;
         location = mlocation;
-        groupAdmins.add(admin);
+
+        groupMembers = new HashMap<String, Boolean>();
+        groupAdmins = new HashMap<String, Boolean>();
+        events = new HashMap<String, Boolean>();
+        groupAdmins.put(admin, Boolean.TRUE);
     }
 
     public Group() {
@@ -75,40 +79,41 @@ public class Group implements Parcelable{
         this.location = location;
     }
 
-    public List<String> getGroupMembers() {
+    public Map<String, Boolean> getGroupMembers() {
         return groupMembers;
     }
 
-    public void setGroupMembers(List<String> groupMembers) {
+    public void setGroupMembers(Map<String, Boolean> groupMembers) {
         this.groupMembers = groupMembers;
     }
 
-    public List<String> getGroupAdmins() {
+    public Map<String, Boolean> getGroupAdmins() {
         return groupAdmins;
     }
 
-    public void setGroupAdmins(List<String> groupAdmins) {
+    public void setGroupAdmins(Map<String, Boolean> groupAdmins) {
         this.groupAdmins = groupAdmins;
     }
 
-    public List<String> getEvents() {
+    public Map<String, Boolean> getEvents() {
         return events;
     }
 
-    public void setEvents(List<String> events) {
+    public void setEvents(Map<String, Boolean> events) {
         this.events = events;
     }
 
-    public void addMember(String uid){
-        groupMembers.add(uid);
+
+    public void addMember(Account user){
+        groupMembers.put(user.getEmail(), Boolean.TRUE);
     }
 
-    public void addAdmin(String uid){
-        groupAdmins.add(uid);
+    public void addAdmin(Account user){
+        groupAdmins.put(user.getEmail(), Boolean.TRUE);
     }
 
     public void addEvent(Event event) {
-        events.add(event.getEventName());
+        events.put(event.getEventName(), Boolean.TRUE);
     }
 
 }
