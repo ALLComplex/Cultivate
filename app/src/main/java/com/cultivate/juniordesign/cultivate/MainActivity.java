@@ -1,30 +1,30 @@
 package com.cultivate.juniordesign.cultivate;
 
+
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.*;
-import android.content.Intent;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseAuth;
-
-import static android.R.attr.duration;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity {
-    private String uid = null;
+    private Account user = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        uid = getIntent().getStringExtra("uid");
+        user = getIntent().getParcelableExtra("curUser");
         Snackbar mySnackbar = Snackbar.make((findViewById(R.id.home_layout)), "Welcome to the Homepage", 1000);
         mySnackbar.show();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -51,29 +51,29 @@ public class MainActivity extends AppCompatActivity {
         popupWindow.showAtLocation(mainLayout, Gravity.TOP | Gravity.LEFT, 0, 0);
     }
 
-    public void goToStub(View v) {
+    public void goToStub(Account user) {
 //        Snackbar mySnackbar = Snackbar.make((findViewById(R.id.home_layout)), "Can't go to the Stub Page", 10000);
 //        mySnackbar.show();
         Intent stub = new Intent(this, StubActivity.class);
-        stub.putExtra("uid", uid);
+        stub.putExtra("curUser", user);
         startActivity(stub);
     }
 
-    public void goToEvent(View v) {
+    public void goToEvent(Account user) {
         Intent event = new Intent(this, EventActivity.class);
-        event.putExtra("uid", uid);
+        event.putExtra("curUser", user);
         startActivity(event);
     }
 
-    public void goToProfile(View v) {
+    public void goToProfile(Account user) {
         Intent profile = new Intent(this, ProfileActivity.class);
-        profile.putExtra("uid", uid);
+        profile.putExtra("curUser", user);
         startActivity(profile);
     }
 
-    public void goToGroup(View v) {
+    public void goToGroup(Account user) {
         Intent group = new Intent(this, GroupActivity.class);
-        group.putExtra("uid", uid);
+        group.putExtra("curUser", user);
         startActivity(group);
     }
 
