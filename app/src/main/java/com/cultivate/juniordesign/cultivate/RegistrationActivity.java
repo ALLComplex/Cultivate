@@ -1,5 +1,6 @@
 package com.cultivate.juniordesign.cultivate;
 
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
@@ -18,8 +19,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by cathy on 9/28/2017.
@@ -35,6 +36,7 @@ public class RegistrationActivity extends AppCompatActivity{
     //currently not implemented but will be needed later.
     private EditText mNameView;
     private EditText mPhoneNumView;
+    private DatabaseReference mDatabase;
 
     private View mProgressView;
     private View mRegistrationFormView;
@@ -57,6 +59,7 @@ public class RegistrationActivity extends AppCompatActivity{
 
         mRegistrationFormView = findViewById(R.id.registration_form);
         mProgressView = findViewById(R.id.registration_progress);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
     public void attemptCreateAccount(View v) {
@@ -103,7 +106,7 @@ public class RegistrationActivity extends AppCompatActivity{
         }
     }
 
-    public void createAccount(final String email, String password, String phone, final String name, View v) {
+    public void createAccount(final String email, String password, final String phone, final String name, View v) {
         if (isEmailValid(email) && isPasswordValid(password)) {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -119,15 +122,19 @@ public class RegistrationActivity extends AppCompatActivity{
                                 Toast.makeText(RegistrationActivity.this, failCreate, Toast.LENGTH_SHORT).show();
                                 return;
                             }
+                            Account newUser = new Account(name, email, phone);
+                            Group newGroup = new Group("Psi Upsilon", "Atlanta, GA", newUser.getName());
+                            mDatabase.child("users").child(email.replace('.', '_')).setValue(newUser);
+                            mDatabase.child("groups").child(newGroup.getGroupName()).setValue(newGroup);
                             Toast.makeText(RegistrationActivity.this, name,Toast.LENGTH_LONG).show();
                             mAuth.signOut();
                             Toast.makeText(RegistrationActivity.this, successCreate, Toast.LENGTH_SHORT).show();
                             // ...
+                            launch(newUser);
                         }
                     });
         }
-        launch(v);
-    }
+
 
     private void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
@@ -171,8 +178,10 @@ public class RegistrationActivity extends AppCompatActivity{
         return password.length() > 4;
     }
 
-    public void launch(View v){
+
+    public void launch(Account user){
         Intent login = new Intent(this, LoginActivity.class);
+        login.putExtra("curUser", user);
         startActivity(login);
     }
 

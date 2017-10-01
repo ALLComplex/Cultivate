@@ -1,5 +1,6 @@
 package com.cultivate.juniordesign.cultivate;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -19,26 +20,27 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 
 public class ProfileActivity extends AppCompatActivity {
-    private String uid = null;
+    private Account user = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        uid = getIntent().getStringExtra("uid");
+        user = getIntent().getParcelableExtra("curUser");
         setContentView(R.layout.profile_stub);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String email = mAuth.getCurrentUser().getEmail();
+
         TextView view = (TextView) findViewById(R.id.textView3);
         view.setText("Email: " + email);
 
     }
 
-    public void goToHome(View v) {
+    public void goToHome(Account user) {
         Intent event = new Intent(this, MainActivity.class);
-        event.putExtra("uid", uid);
+        event.putExtra("curUser", user);
         startActivity(event);
     }
 
-    public void openHamburgerBar(View v) {
+    public void openHamburgerBar(Account user) {
         // get a reference to the already created main layout
         ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.profile_layout);
 
@@ -56,39 +58,39 @@ public class ProfileActivity extends AppCompatActivity {
         popupWindow.showAtLocation(mainLayout, Gravity.TOP | Gravity.LEFT, 0, 0);
     }
 
-    public void goToStub(View v) {
+    public void goToStub(Account user) {
         Intent stub = new Intent(this, StubActivity.class);
-        stub.putExtra("uid", uid);
+        stub.putExtra("curUser", user);
         startActivity(stub);
     }
 
-    public void goToEvent(View v) {
+    public void goToEvent(Account user) {
         Intent event = new Intent(this, EventActivity.class);
-        event.putExtra("uid", uid);
+        event.putExtra("curUser", user);
         startActivity(event);
     }
 
-    public void goToProfile(View v) {
+    public void goToProfile(Account user) {
         Intent profile = new Intent(this, ProfileActivity.class);
-        profile.putExtra("uid", uid);
+        profile.putExtra("curUser", user);
         startActivity(profile);
     }
 
-    public void goToGroup(View v) {
+    public void goToGroup(Account user) {
         Intent group = new Intent(this, GroupActivity.class);
-        group.putExtra("uid", uid);
+        group.putExtra("curUser", user);
         startActivity(group);
     }
 
     /*
     goes to the login screen; clears user data
      */
-    public void goToLogout(View v) {
+    public void goToLogout(Account user) {
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
     }
 
-    public void notImplemented(View v) {
+    public void notImplemented(Account user) {
         Toast.makeText(ProfileActivity.this, "This feature is not yet implemented", Toast.LENGTH_SHORT).show();
     }
 }
