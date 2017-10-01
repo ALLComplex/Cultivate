@@ -155,7 +155,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 return;
 
                             }
-                            mDatabase.child("users").orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+                            mDatabase.child("users").orderByChild("email").equalTo(email.replace('.', '_')).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     Account user = dataSnapshot.getChildren().iterator().next().getValue(Account.class);

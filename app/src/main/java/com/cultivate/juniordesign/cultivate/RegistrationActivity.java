@@ -122,11 +122,13 @@ public class RegistrationActivity extends AppCompatActivity{
                                 Toast.makeText(RegistrationActivity.this, failCreate, Toast.LENGTH_SHORT).show();
                                 return;
                             }
-                            Account newUser = new Account(name, email, phone);
+                            Account newUser = new Account(name, email.replace('.', '_'), phone);
+
                             Group newGroup = new Group("Psi Upsilon", "Atlanta, GA", newUser.getName());
-                            mDatabase.child("users").child(email.replace('.', '_')).setValue(newUser);
+                            newUser.becomeAdmin(newGroup);
+                            mDatabase.child("users").child(newUser.getEmail()).setValue(newUser);
                             mDatabase.child("groups").child(newGroup.getGroupName()).setValue(newGroup);
-                            Toast.makeText(RegistrationActivity.this, name,Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegistrationActivity.this, name, Toast.LENGTH_LONG).show();
                             mAuth.signOut();
                             Toast.makeText(RegistrationActivity.this, successCreate, Toast.LENGTH_SHORT).show();
                             // ...
@@ -134,7 +136,7 @@ public class RegistrationActivity extends AppCompatActivity{
                         }
                     });
         }
-
+    }
 
     private void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow

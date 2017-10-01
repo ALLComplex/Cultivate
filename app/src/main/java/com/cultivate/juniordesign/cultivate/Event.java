@@ -3,7 +3,8 @@ package com.cultivate.juniordesign.cultivate;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by emilyhuskins on 9/29/17.
@@ -16,14 +17,15 @@ public class Event implements Parcelable{
     String eventName;
     String eventGroup;
     String location;
-
-    List<String> peopleAttending;
-    List<String> peopleNotAttending;
+    Map<String, Boolean> peopleAttending;
+    Map<String, Boolean> peopleNotAttending;
 
     public Event(String meventName, String meventGroup, String mlocation) {
         eventName = meventName;
         eventGroup = meventGroup;
         location = mlocation;
+        peopleAttending = new HashMap<String, Boolean>();
+        peopleNotAttending = new HashMap<String, Boolean>();
     }
 
     public Event(){
@@ -84,12 +86,28 @@ public class Event implements Parcelable{
         this.location = location;
     }
 
+    public Map<String, Boolean> getPeopleAttending() {
+        return peopleAttending;
+    }
+
+    public void setPeopleAttending(Map<String, Boolean> peopleAttending) {
+        this.peopleAttending = peopleAttending;
+    }
+
+    public Map<String, Boolean> getPeopleNotAttending() {
+        return peopleNotAttending;
+    }
+
+    public void setPeopleNotAttending(Map<String, Boolean> peopleNotAttending) {
+        this.peopleNotAttending = peopleNotAttending;
+    }
+
     public void addPersonAttending(Account user) {
-        peopleAttending.add(user.getEmail());
+        peopleAttending.put(user.getEmail(), Boolean.TRUE);
     }
 
     public void addPersonNotAttending(Account user) {
-        peopleNotAttending.add(user.getEmail());
+        peopleNotAttending.put(user.getEmail(), Boolean.TRUE);
     }
 }
 

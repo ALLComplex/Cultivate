@@ -3,7 +3,8 @@ package com.cultivate.juniordesign.cultivate;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by emilyhuskins on 9/6/17.
@@ -15,13 +16,16 @@ public class Account implements Parcelable {
     String name;
     String phone;
     String email;
-    List<String> memberGroups;
-    List<String> manageGroups;
+    Map<String, Boolean> memberGroups;
+    Map<String, Boolean> manageGroups;
 
     public Account(String mname, String memail, String mphone) {
         name = mname;
         phone = mphone;
         email = memail;
+        memberGroups = new HashMap<String, Boolean>();
+        manageGroups = new HashMap<String, Boolean>();
+
     }
 
 
@@ -84,30 +88,31 @@ public class Account implements Parcelable {
         this.email = email;
     }
 
-    public List<String> getMemberGroups() {
+    public Map<String, Boolean> getMemberGroups() {
         return memberGroups;
     }
 
-    public void setMemberGroups(List<String> memberGroups) {
+    public void setMemberGroups(Map<String, Boolean> memberGroups) {
         this.memberGroups = memberGroups;
     }
 
-    public List<String> getManageGroups() {
+    public Map<String, Boolean> getManageGroups() {
         return manageGroups;
     }
 
-    public void setManageGroups(List<String> manageGroups) {
+    public void setManageGroups(Map<String, Boolean> manageGroups) {
         this.manageGroups = manageGroups;
     }
 
+
     public void becomeAdmin(Group group){
-        manageGroups.add(group.getGroupName());
-        group.addAdmin(email);
+        manageGroups.put(group.getGroupName(), Boolean.TRUE);
+        group.addAdmin(this);
     }
 
     public void becomeMember(Group group){
-        memberGroups.add(group.getGroupName());
-        group.addMember(email);
+        memberGroups.put(group.getGroupName(), Boolean.TRUE);
+        group.addMember(this);
     }
 
 

@@ -93,15 +93,15 @@ public class GroupActivity extends AppCompatActivity {
         startActivity(group);
     }
 
-    public void goToCreateGroup(View v) {
+    public void goToCreateGroup(Account user) {
         Intent group = new Intent(this, CreateGroupActivity.class);
-        group.putExtra("uid", uid);
+        group.putExtra("curUser", user);
         startActivity(group);
     }
 
-    public void goToJoinGroup(View v) {
+    public void goToJoinGroup(Account user) {
         Intent group = new Intent(this, JoinGroupActivity.class);
-        group.putExtra("uid", uid);
+        group.putExtra("curUser", user);
         startActivity(group);
     }
 
