@@ -20,7 +20,7 @@ public class EventActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        uid = getIntent().getStringExtra("uid");
+        uid = getIntent().getParcelableExtra("curUser");
         setContentView(R.layout.activity_event);
     }
 
@@ -33,9 +33,9 @@ public class EventActivity extends AppCompatActivity {
         return false;
     }
 
-    public void goToHome(View v) {
+    public void goToHome(Account user) {
         Intent event = new Intent(this, MainActivity.class);
-        event.putExtra("uid", uid);
+        event.putExtra("curUser", user);
         startActivity(event);
     }
 
@@ -57,27 +57,27 @@ public class EventActivity extends AppCompatActivity {
         popupWindow.showAtLocation(mainLayout, Gravity.TOP | Gravity.LEFT, 0, 0);
     }
 
-    public void goToStub(View v) {
+    public void goToStub(Account user) {
         Intent stub = new Intent(this, StubActivity.class);
-        stub.putExtra("uid", uid);
+        stub.putExtra("curUser", user);
         startActivity(stub);
     }
 
-    public void goToEvent(View v) {
+    public void goToEvent(Account user) {
         Intent event = new Intent(this, EventActivity.class);
-        event.putExtra("uid", uid);
+        event.putExtra("curUser", user);
         startActivity(event);
     }
 
-    public void goToProfile(View v) {
+    public void goToProfile(Account user) {
         Intent profile = new Intent(this, ProfileActivity.class);
-        profile.putExtra("uid", uid);
+        profile.putExtra("curUser", user);
         startActivity(profile);
     }
 
-    public void goToGroup(View v) {
+    public void goToGroup(Account user) {
         Intent group = new Intent(this, GroupActivity.class);
-        group.putExtra("uid", uid);
+        group.putExtra("curUser", user);
         startActivity(group);
     }
 
