@@ -28,19 +28,18 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.profile_stub);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String email = mAuth.getCurrentUser().getEmail();
-
         TextView view = (TextView) findViewById(R.id.textView3);
         view.setText("Email: " + email);
 
     }
 
-    public void goToHome(Account user) {
+    public void goToHome(View v) {
         Intent event = new Intent(this, MainActivity.class);
         event.putExtra("curUser", user);
         startActivity(event);
     }
 
-    public void openHamburgerBar(Account user) {
+    public void openHamburgerBar(View v) {
         // get a reference to the already created main layout
         ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.profile_layout);
 
@@ -58,25 +57,25 @@ public class ProfileActivity extends AppCompatActivity {
         popupWindow.showAtLocation(mainLayout, Gravity.TOP | Gravity.LEFT, 0, 0);
     }
 
-    public void goToStub(Account user) {
+    public void goToStub(View v) {
         Intent stub = new Intent(this, StubActivity.class);
         stub.putExtra("curUser", user);
         startActivity(stub);
     }
 
-    public void goToEvent(Account user) {
+    public void goToEvent(View v) {
         Intent event = new Intent(this, EventActivity.class);
         event.putExtra("curUser", user);
         startActivity(event);
     }
 
-    public void goToProfile(Account user) {
+    public void goToProfile(View v) {
         Intent profile = new Intent(this, ProfileActivity.class);
         profile.putExtra("curUser", user);
         startActivity(profile);
     }
 
-    public void goToGroup(Account user) {
+    public void goToGroup(View v) {
         Intent group = new Intent(this, GroupActivity.class);
         group.putExtra("curUser", user);
         startActivity(group);
@@ -85,12 +84,12 @@ public class ProfileActivity extends AppCompatActivity {
     /*
     goes to the login screen; clears user data
      */
-    public void goToLogout(Account user) {
+    public void goToLogout(View v) {
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
     }
 
-    public void notImplemented(Account user) {
+    public void notImplemented(View v) {
         Toast.makeText(ProfileActivity.this, "This feature is not yet implemented", Toast.LENGTH_SHORT).show();
     }
 }

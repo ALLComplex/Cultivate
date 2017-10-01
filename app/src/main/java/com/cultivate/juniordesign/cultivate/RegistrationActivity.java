@@ -56,7 +56,6 @@ public class RegistrationActivity extends AppCompatActivity{
         //populateAutoComplete();
         mPasswordView = (EditText) findViewById(R.id.password);
         mAuth = FirebaseAuth.getInstance();
-
         mRegistrationFormView = findViewById(R.id.registration_form);
         mProgressView = findViewById(R.id.registration_progress);
         mDatabase = FirebaseDatabase.getInstance().getReference();

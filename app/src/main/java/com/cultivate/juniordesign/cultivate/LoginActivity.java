@@ -116,8 +116,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 attemptLogin();
             }
         });
-
-
+        Snackbar test = Snackbar.make((findViewById(R.id.activity_login)), "TESTING STUFF! ", 10000);
+        test.show();
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
@@ -137,13 +137,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     public void signIn(final String email, String password) {
+
         if (isEmailValid(email) && isPasswordValid(password)) {
+            Snackbar test = Snackbar.make((findViewById(R.id.activity_login)), "TESTING: SIGN IN! ", 10000);
+            test.show();
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+                            Snackbar test = Snackbar.make((findViewById(R.id.activity_login)), "TESTING: Start! ", 10000);
+                            test.show();
                             Log.d("FIREBASE", "signInWithEmail:onComplete:" + task.isSuccessful());
-
                             // If sign in fails, display a message to the user. If sign in succeeds
                             // the auth state listener will be notified and logic to handle the
                             // signed in user can be handled in the listener.
@@ -155,11 +159,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 return;
 
                             }
+
+                            test = Snackbar.make((findViewById(R.id.activity_login)), "TESTING: Here! ", 10000);
+                            test.show();
                             mDatabase.child("users").orderByChild("email").equalTo(email.replace('.', '_')).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     Account user = dataSnapshot.getChildren().iterator().next().getValue(Account.class);
-
+                                    Snackbar test = Snackbar.make((findViewById(R.id.activity_login)), "TESTING: Pre- Launch! ", 10000);
+                                    test.show();
                                     launch(user);
                                 }
 
@@ -176,9 +184,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     public void launch(Account user) {
+        Snackbar test = Snackbar.make((findViewById(R.id.activity_login)), "TESTING: LAUNCH! ", 10000);
+        test.show();
         Intent i = new Intent(this, MainActivity.class);
         i.putExtra("curUser", user);
         startActivity(i);
+
     }
 
     private void populateAutoComplete() {
@@ -230,8 +241,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
-
-
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
