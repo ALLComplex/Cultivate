@@ -124,10 +124,10 @@ public class RegistrationActivity extends AppCompatActivity{
                             }
                             Account newUser = new Account(name, email.replace('.', '_'), phone);
 
-                            Group newGroup = new Group("Psi Upsilon", "Atlanta, GA", newUser.getName());
-                            newUser.becomeAdmin(newGroup);
+                            //Group newGroup = new Group("Psi Upsilon", "Atlanta, GA", newUser.getName());
+                            //newUser.becomeAdmin(newGroup);
                             mDatabase.child("users").child(newUser.getEmail()).setValue(newUser);
-                            mDatabase.child("groups").child(newGroup.getGroupName()).setValue(newGroup);
+                            //mDatabase.child("groups").child(newGroup.getGroupName()).setValue(newGroup);
                             Toast.makeText(RegistrationActivity.this, name, Toast.LENGTH_LONG).show();
                             mAuth.signOut();
                             Toast.makeText(RegistrationActivity.this, successCreate, Toast.LENGTH_SHORT).show();
