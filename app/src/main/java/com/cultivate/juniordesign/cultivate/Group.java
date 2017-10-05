@@ -3,7 +3,9 @@ package com.cultivate.juniordesign.cultivate;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,25 +17,39 @@ public class Group implements Parcelable{
 
     String groupName;
     String location;
-    Map<String, Boolean> groupMembers;
-    Map<String, Boolean> groupAdmins;
-    Map<String, Boolean> events;
+    Map<String, Boolean> groupMembers = new HashMap<String, Boolean>();
+    Map<String, Boolean> groupAdmins = new HashMap<String, Boolean>();
+    Map<String, Boolean> events = new HashMap<String, Boolean>();
 
-    public Group(String mgroupName, String mlocation, String admin) {
+    public Group(String mgroupName, String mlocation) {
         groupName = mgroupName;
         location = mlocation;
-
-        groupMembers = new HashMap<String, Boolean>();
-        groupAdmins = new HashMap<String, Boolean>();
-        events = new HashMap<String, Boolean>();
-        groupAdmins.put(admin, Boolean.TRUE);
     }
 
     public Group() {
     }
 
     private Group(Parcel in) {
-        this(in.readString(), in.readString(),in.readString());
+        this(in.readString(), in.readString());
+        List<String> groupMems = new ArrayList<String>();
+        List<String> groupAds = new ArrayList<String>();
+        List<String> eventList = new ArrayList<String>();
+
+        in.readList(groupMems, null);
+        in.readList(groupAds, null);
+        in.readList(eventList, null);
+
+        for (String x: groupMems) {
+            groupMembers.put(x, Boolean.TRUE);
+        }
+        for (String x: groupAds) {
+            groupAdmins.put(x, Boolean.TRUE);
+        }
+        for (String x: eventList) {
+            events.put(x, Boolean.TRUE);
+        }
+
+
     }
 
 
@@ -46,6 +62,10 @@ public class Group implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(groupName);
+        dest.writeString(location);
+        dest.writeList(new ArrayList(groupMembers.keySet()));
+        dest.writeList(new ArrayList(groupAdmins.keySet()));
+        dest.writeList(new ArrayList(events.keySet()));
 
     }
 

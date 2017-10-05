@@ -3,7 +3,9 @@ package com.cultivate.juniordesign.cultivate;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,21 +18,31 @@ public class Account implements Parcelable {
     String name;
     String phone;
     String email;
-    Map<String, Boolean> memberGroups;
-    Map<String, Boolean> manageGroups;
+    Map<String, Boolean> memberGroups = new HashMap<String, Boolean>();
+    Map<String, Boolean> manageGroups = new HashMap<String, Boolean>();;
 
     public Account(String mname, String memail, String mphone) {
         name = mname;
         phone = mphone;
         email = memail;
-        memberGroups = new HashMap<String, Boolean>();
-        manageGroups = new HashMap<String, Boolean>();
-
     }
+
 
 
     private Account(Parcel in) {
         this(in.readString(), in.readString(), in.readString());
+        List<String> memberList = new ArrayList<String>();
+        List<String> adminList = new ArrayList<String>();
+
+        in.readList(memberList, null);
+        in.readList(adminList, null);
+        for (String x: memberList) {
+           memberGroups.put(x, Boolean.TRUE);
+        }
+        for (String x: adminList) {
+            manageGroups.put(x, Boolean.TRUE);
+        }
+
     }
 
     public Account() {
@@ -45,7 +57,11 @@ public class Account implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
         dest.writeString(email);
+        dest.writeString(phone);
+        dest.writeList(new ArrayList(memberGroups.keySet()));
+        dest.writeList(new ArrayList(manageGroups.keySet()));
 
     }
 
