@@ -16,18 +16,18 @@ import android.widget.Toast;
  */
 
 public class JoinGroupActivity extends AppCompatActivity {
-    private String uid = null;
+    private Account user = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        uid = getIntent().getStringExtra("uid");
+        user = getIntent().getParcelableExtra("curUser");
         setContentView(R.layout.join_group_layout);
     }
 
     public void goToHome(View v) {
         Intent event = new Intent(this, MainActivity.class);
-        event.putExtra("uid", uid);
+        event.putExtra("curUser", user);
         startActivity(event);
     }
 
@@ -51,25 +51,25 @@ public class JoinGroupActivity extends AppCompatActivity {
 
     public void goToStub(View v) {
         Intent stub = new Intent(this, StubActivity.class);
-        stub.putExtra("uid", uid);
+        stub.putExtra("curUser", user);
         startActivity(stub);
     }
 
     public void goToEvent(View v) {
         Intent event = new Intent(this, EventActivity.class);
-        event.putExtra("uid", uid);
+        event.putExtra("curUser", user);
         startActivity(event);
     }
 
     public void goToProfile(View v) {
         Intent profile = new Intent(this, ProfileActivity.class);
-        profile.putExtra("uid", uid);
+        profile.putExtra("curUser", user);
         startActivity(profile);
     }
 
     public void goToGroup(View v) {
         Intent group = new Intent(this, GroupActivity.class);
-        group.putExtra("uid", uid);
+        group.putExtra("curUser", user);
         startActivity(group);
     }
 

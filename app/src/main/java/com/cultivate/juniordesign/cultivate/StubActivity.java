@@ -13,11 +13,11 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 
 public class StubActivity extends AppCompatActivity {
-    private String uid = null;
+    private Account user = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        uid = getIntent().getParcelableExtra("curUser");
+        user = getIntent().getParcelableExtra("curUser");
         setContentView(R.layout.activity_stub);
     }
     public void goToHome(Account user) {
@@ -44,25 +44,25 @@ public class StubActivity extends AppCompatActivity {
         popupWindow.showAtLocation(mainLayout, Gravity.TOP | Gravity.LEFT, 0, 0);
     }
 
-    public void goToStub(Account user) {
+    public void goToStub(View v) {
         Intent stub = new Intent(this, StubActivity.class);
         stub.putExtra("curUser", user);
         startActivity(stub);
     }
 
-    public void goToEvent(Account user) {
+    public void goToEvent(View v) {
         Intent event = new Intent(this, EventActivity.class);
         event.putExtra("curUser", user);
         startActivity(event);
     }
 
-    public void goToProfile(Account user) {
+    public void goToProfile(View v) {
         Intent profile = new Intent(this, ProfileActivity.class);
         profile.putExtra("curUser", user);
         startActivity(profile);
     }
 
-    public void goToGroup(Account user) {
+    public void goToGroup(View v) {
         Intent group = new Intent(this, GroupActivity.class);
         group.putExtra("curUser", user);
         startActivity(group);

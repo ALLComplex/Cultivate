@@ -32,19 +32,6 @@ public class MainActivity extends AppCompatActivity {
         mySnackbar.show();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser authUser = mAuth.getCurrentUser();
-        /*mDatabase = FirebaseDatabase.getInstance().getReference();
-        Log.d("authuser email", authUser.getEmail());
-
-        mDatabase.child("users").orderByChild("email").equalTo(authUser.getEmail().replace('.', '_')).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                 user = dataSnapshot.getChildren().iterator().next().getValue(Account.class);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });*/
         Snackbar email = Snackbar.make((findViewById(R.id.home_layout)), "e-mail: " + user.getEmail(), 10000);
         email.show();
     }
@@ -67,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         popupWindow.showAtLocation(mainLayout, Gravity.TOP | Gravity.LEFT, 0, 0);
     }
 
-    public void goToStub(Account user) {
+    public void goToStub(View v) {
 //        Snackbar mySnackbar = Snackbar.make((findViewById(R.id.home_layout)), "Can't go to the Stub Page", 10000);
 //        mySnackbar.show();
         Intent stub = new Intent(this, StubActivity.class);
@@ -75,19 +62,19 @@ public class MainActivity extends AppCompatActivity {
         startActivity(stub);
     }
 
-    public void goToEvent(Account user) {
+    public void goToEvent(View v) {
         Intent event = new Intent(this, EventActivity.class);
         event.putExtra("curUser", user);
         startActivity(event);
     }
 
-    public void goToProfile(Account user) {
+    public void goToProfile(View v) {
         Intent profile = new Intent(this, ProfileActivity.class);
         profile.putExtra("curUser", user);
         startActivity(profile);
     }
 
-    public void goToGroup(Account user) {
+    public void goToGroup(View v) {
         Intent group = new Intent(this, GroupActivity.class);
         group.putExtra("curUser", user);
         startActivity(group);
