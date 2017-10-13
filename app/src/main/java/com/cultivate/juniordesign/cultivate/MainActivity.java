@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.hamburgerbar_popup, null);
+        TextView aView = (TextView) popupView.findViewById(R.id.userName);
+        aView.setText("userName here");
 
         // create the popup window
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
