@@ -1,4 +1,4 @@
-package com.cultivate.juniordesign.cultivate;
+package com.cultivate.juniordesign.cultivate.ActivityClass;
 
 
 import android.content.Intent;
@@ -14,12 +14,14 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cultivate.juniordesign.cultivate.Account;
+import com.cultivate.juniordesign.cultivate.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends HamburgerActivity {
     private Account user = null;
     private DatabaseReference mDatabase;
 
@@ -38,23 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openHamburgerBar(View v) {
-        // get a reference to the already created main layout
-        ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.home_layout);
-
-        // inflate the layout of the popup window
-        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.hamburgerbar_popup, null);
-        TextView aView = (TextView) popupView.findViewById(R.id.userName);
-        aView.setText("userName here");
-
-        // create the popup window
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-        // show the popup window
-        popupWindow.showAtLocation(mainLayout, Gravity.TOP | Gravity.LEFT, 0, 0);
+        super.openHamburgerBar(v, user);
     }
 
     public void goToStub(View v) {

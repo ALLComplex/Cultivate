@@ -1,4 +1,4 @@
-package com.cultivate.juniordesign.cultivate;
+package com.cultivate.juniordesign.cultivate.ActivityClass;
 
 
 import android.content.Intent;
@@ -10,9 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class StubActivity extends AppCompatActivity {
+import com.cultivate.juniordesign.cultivate.Account;
+import com.cultivate.juniordesign.cultivate.R;
+
+public class StubActivity extends HamburgerActivity {
     private Account user = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,21 +31,7 @@ public class StubActivity extends AppCompatActivity {
     }
 
     public void openHamburgerBar(View v) {
-        // get a reference to the already created main layout
-        ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.stub_layout);
-
-        // inflate the layout of the popup window
-        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.hamburgerbar_popup, null);
-
-        // create the popup window
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-        // show the popup window
-        popupWindow.showAtLocation(mainLayout, Gravity.TOP | Gravity.LEFT, 0, 0);
+        super.openHamburgerBar(v, user);
     }
 
     public void goToStub(View v) {

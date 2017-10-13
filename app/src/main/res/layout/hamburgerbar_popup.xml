@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_action_name"
-        android:layout_alignTop="@+id/space2"
+        android:layout_alignTop="@+id/title"
         android:layout_alignParentRight="true"/>
 
     <TextView
@@ -92,10 +92,11 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/userName"
         android:onClick="goToProfile"
+        android:layout_marginLeft="30dp"
         android:fontFamily="casual"
         android:text="My Profile"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/myAttendance"
@@ -104,11 +105,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/myProfile"
+        android:layout_marginLeft="30dp"
         android:fontFamily="casual"
         android:text="My Attendance"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:onClick="notImplemented"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/logOut"
@@ -118,10 +120,11 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/myAttendance"
         android:fontFamily="casual"
+        android:layout_marginLeft="30dp"
         android:text="Log Out"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:onClick="goToLogout"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/settings"

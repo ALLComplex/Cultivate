@@ -1,4 +1,4 @@
-package com.cultivate.juniordesign.cultivate;
+package com.cultivate.juniordesign.cultivate.ActivityClass;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -35,6 +35,8 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cultivate.juniordesign.cultivate.Account;
+import com.cultivate.juniordesign.cultivate.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -158,7 +160,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                             mDatabase.child("users").orderByChild("email").equalTo(email.replace('.', '_')).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    Account user = dataSnapshot.getChildren().iterator().next().getValue(Account.class);
+                                    Account user = dataSnapshot.getChildren().iterator().next().getValue(Account.class); //this is returning only the email??
 
                                     launch(user);
                                 }

@@ -1,4 +1,4 @@
-package com.cultivate.juniordesign.cultivate;
+package com.cultivate.juniordesign.cultivate.ActivityClass;
 
 
 import android.animation.Animator;
@@ -15,6 +15,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.cultivate.juniordesign.cultivate.Account;
+import com.cultivate.juniordesign.cultivate.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -26,7 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
  * Created by cathy on 9/28/2017.
  */
 
-public class RegistrationActivity extends AppCompatActivity{
+public class RegistrationActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
