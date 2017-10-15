@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:logo="@mipmap/ic_launcher"
         app:navigationIcon="@drawable/ic_action_name"
-        app:title="More Groups" />
+        app:title="My Groups List" />
 
 
     <ImageView
@@ -61,7 +61,7 @@
         android:layout_marginTop="8dp"
         android:layout_weight="0.69"
         android:fontFamily="casual"
-        android:text="Your Groups"
+        android:text="My Groups"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="36sp"

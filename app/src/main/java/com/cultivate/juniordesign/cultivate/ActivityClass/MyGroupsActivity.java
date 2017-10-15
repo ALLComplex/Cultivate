@@ -3,13 +3,7 @@ package com.cultivate.juniordesign.cultivate.ActivityClass;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +14,7 @@ import com.cultivate.juniordesign.cultivate.R;
  * Created by Paul on 9/10/2017.
  */
 
-public class GroupActivity extends HamburgerActivity {
+public class MyGroupsActivity extends HamburgerActivity {
 
     private Account user = null;
     private boolean isAdmin = false;
@@ -33,7 +27,7 @@ public class GroupActivity extends HamburgerActivity {
         super.onCreate(savedInstanceState);
 
         user = getIntent().getParcelableExtra("curUser");
-        setContentView(R.layout.activity_group);
+        setContentView(R.layout.activity_my_groups);
         isAdmin = checkIfAdmin();
         //TextView adminTextView  = (TextView)findViewById(R.id.adminTextView);
         //adminTextView.setVisibility(output);
@@ -77,12 +71,12 @@ public class GroupActivity extends HamburgerActivity {
     }
 
     public void goToGroup(View v) {
-        Intent group = new Intent(this, GroupActivity.class);
+        Intent group = new Intent(this, GroupProfileActivity.class);
         group.putExtra("curUser", user);
         startActivity(group);
     }
 
-    public void goToCreateGroup(View v) {
+    public void goToLeaveGroup(View v) {
         Intent group = new Intent(this, CreateGroupActivity.class);
         group.putExtra("curUser", user);
         startActivity(group);
@@ -103,6 +97,6 @@ public class GroupActivity extends HamburgerActivity {
     }
 
     public void notImplemented(View v) {
-        Toast.makeText(GroupActivity.this, "This feature is not yet implemented", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MyGroupsActivity.this, "This feature is not yet implemented", Toast.LENGTH_SHORT).show();
     }
 }

@@ -3,15 +3,8 @@ package com.cultivate.juniordesign.cultivate.ActivityClass;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cultivate.juniordesign.cultivate.Account;
@@ -64,7 +57,7 @@ public class MainActivity extends HamburgerActivity {
     }
 
     public void goToGroup(View v) {
-        Intent group = new Intent(this, GroupActivity.class);
+        Intent group = new Intent(this, MyGroupsActivity.class);
         group.putExtra("curUser", user);
         startActivity(group);
     }
