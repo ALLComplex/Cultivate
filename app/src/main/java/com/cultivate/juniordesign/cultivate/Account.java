@@ -22,7 +22,8 @@ public class Account implements Parcelable {
     String phone;
     String email;
     Map<String, Boolean> memberGroups = new HashMap<String, Boolean>();
-    Map<String, Boolean> manageGroups = new HashMap<String, Boolean>();;
+    Map<String, Boolean> manageGroups = new HashMap<String, Boolean>();
+    Map<String, Boolean> events = new HashMap<>();
 
     public Account(String mname, String memail, String mphone) {
         name = mname;
