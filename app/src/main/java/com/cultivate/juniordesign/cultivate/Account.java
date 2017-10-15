@@ -3,6 +3,8 @@ package com.cultivate.juniordesign.cultivate;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.Map;
  */
 
 public class Account implements Parcelable {
+    private DatabaseReference mDatabase;
 
 
     String name;
@@ -118,6 +121,7 @@ public class Account implements Parcelable {
 
     public void setManageGroups(Map<String, Boolean> manageGroups) {
         this.manageGroups = manageGroups;
+
     }
 
 

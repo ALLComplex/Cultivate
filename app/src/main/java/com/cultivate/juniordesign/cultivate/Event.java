@@ -3,6 +3,8 @@ package com.cultivate.juniordesign.cultivate;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +13,7 @@ import java.util.Map;
  */
 
 public class Event implements Parcelable{
+    private DatabaseReference mDatabase;
 
 
 
