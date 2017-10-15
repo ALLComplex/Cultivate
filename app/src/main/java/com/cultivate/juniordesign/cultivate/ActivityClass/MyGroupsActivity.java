@@ -77,12 +77,12 @@ public class GroupActivity extends HamburgerActivity {
     }
 
     public void goToGroup(View v) {
-        Intent group = new Intent(this, GroupActivity.class);
+        Intent group = new Intent(this, GroupProfileActivity.class);
         group.putExtra("curUser", user);
         startActivity(group);
     }
 
-    public void goToCreateGroup(View v) {
+    public void goToLeaveGroup(View v) {
         Intent group = new Intent(this, CreateGroupActivity.class);
         group.putExtra("curUser", user);
         startActivity(group);
