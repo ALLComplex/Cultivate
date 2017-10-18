@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:logo="@mipmap/ic_launcher"
         app:navigationIcon="@drawable/ic_action_name"
-        app:title="Stub Page" />
+        app:title="Join a Group!" />
 
     <ImageView
         android:id="@+id/invisibleButton"
@@ -100,6 +100,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <SearchView
+                android:id="@+id/search_bar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.69" />
@@ -110,7 +111,8 @@
                 android:layout_height="match_parent"
                 android:fontFamily="casual"
                 android:text="Join Group"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:onClick="goToJoinGroup"/>
 
 
         </LinearLayout>
