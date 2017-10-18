@@ -1,9 +1,12 @@
 package com.cultivate.juniordesign.cultivate;
 
+import android.util.Log;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 /**
@@ -11,14 +14,15 @@ import com.google.firebase.database.ValueEventListener;
  */
 
 public class FirebaseHandler {
-    Account user = null;
-    Group group = null;
-    Event event = null;
+
 
     private static DatabaseReference mDatabase;
 
-    public static void FirebaseHandler(){
+    public FirebaseHandler() {
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        if (mDatabase == null) {
+            System.out.print("hi");
+        }
     }
 
     public void pushAccountChange(Account account){
@@ -33,56 +37,61 @@ public class FirebaseHandler {
         mDatabase.child("events").child(event.getEventName()).setValue(event);
     }
 
-    public Account getAccount(String email){
-
-        mDatabase.child("users").orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+    public void getAccount(String email, final GetDataListener listener){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users").child(email).getRef();
+        listener.onStart();
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                user = dataSnapshot.getChildren().iterator().next().getValue(Account.class);
-
-
+                Log.d("TEST", "SUCCESS!");
+                listener.onSuccess(dataSnapshot);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                Log.w("FAILURE", "Failed to read value.", databaseError.toException());
+                listener.onFailed(databaseError);
             }
         });
-        return user;
-
     }
 
-    public Group getGroup(String ref){
-
-        mDatabase.child("groups").orderByChild("groupName").equalTo(ref).addListenerForSingleValueEvent(new ValueEventListener() {
+    public void getGroup(String groupName, final GetDataListener listener) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("groups").child(groupName).getRef();
+        listener.onStart();
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                group = dataSnapshot.getChildren().iterator().next().getValue(Group.class);
-
-
+                Log.d("TEST", "SUCCESS!");
+                listener.onSuccess(dataSnapshot);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                Log.w("FAILURE", "Failed to read value.", databaseError.toException());
+                listener.onFailed(databaseError);
             }
         });
-        return group;
     }
 
-    public Event getEvent(String ref){
-
-        mDatabase.child("events").orderByChild("eventName").equalTo(ref).addListenerForSingleValueEvent(new ValueEventListener() {
+    public void getEvent(String eventName, final GetDataListener listener){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("events").child(eventName).getRef();
+        listener.onStart();
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                event = dataSnapshot.getChildren().iterator().next().getValue(Event.class);
-
-
+                Log.d("TEST", "SUCCESS!");
+                listener.onSuccess(dataSnapshot);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                Log.w("FAILURE", "Failed to read value.", databaseError.toException());
+                listener.onFailed(databaseError);
             }
         });
-        return event;
     }
 
 }
