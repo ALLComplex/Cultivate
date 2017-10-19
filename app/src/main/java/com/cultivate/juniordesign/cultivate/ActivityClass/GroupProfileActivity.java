@@ -2,6 +2,7 @@ package com.cultivate.juniordesign.cultivate.ActivityClass;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -44,6 +45,11 @@ public class GroupProfileActivity extends HamburgerActivity {
         if (!isAdmin) {
             adminRequest.setText("Claim to be Admin");
         }
+    }
+
+    public void openHamburgerBar(View v) {
+        ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.group_profile_layout);
+        super.openHamburgerBar(mainLayout, v, user);
     }
 
     private boolean checkIfAdmin() {

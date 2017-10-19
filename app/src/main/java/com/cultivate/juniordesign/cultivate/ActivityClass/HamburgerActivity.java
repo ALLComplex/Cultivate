@@ -18,9 +18,7 @@ import com.cultivate.juniordesign.cultivate.R;
 
 abstract class HamburgerActivity extends AppCompatActivity {
 
-    public void openHamburgerBar(View v, Account user) {
-        // get a reference to the already created main layout
-        ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.home_layout);
+    public void openHamburgerBar(ConstraintLayout mainLayout, View v, Account user) {
 
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
