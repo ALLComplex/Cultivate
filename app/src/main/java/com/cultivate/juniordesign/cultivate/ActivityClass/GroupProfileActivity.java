@@ -24,19 +24,20 @@ public class GroupProfileActivity extends HamburgerActivity {
     boolean member = false;
     int output = View.VISIBLE;
     private Group thisGroup = null;
-    TextView adminTextView;
+    TextView adminTextView2;
     Button joinGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_group_profile);
         user = getIntent().getParcelableExtra("curUser");
         thisGroup = getIntent().getParcelableExtra("curGroup");
-        setContentView(R.layout.activity_my_groups);
+        adminTextView2  = (TextView) findViewById(R.id.adminTextView);
+        adminTextView2.setVisibility(output);
         isAdmin = checkIfAdmin();
         member = checkIfMember();
-        adminTextView  = (TextView)findViewById(R.id.adminTextView);
-        adminTextView.setVisibility(output);
+
         joinGroup = (Button) findViewById(R.id.joinLeaveButton);
         if (member) {
             joinGroup.setText("Leave Group");
@@ -94,6 +95,7 @@ public class GroupProfileActivity extends HamburgerActivity {
 
         Intent group = new Intent(this, GroupProfileActivity.class);
         group.putExtra("curUser", user);
+        group.putExtra("curGroup", thisGroup);
         startActivity(group);
     }
 

@@ -109,7 +109,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/editTextName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.69"
@@ -118,12 +118,24 @@
                 android:inputType="textPersonName"
                 android:hint="Group Name" />
 
+            <EditText
+                android:id="@+id/editTextLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.69"
+                android:ems="10"
+                android:fontFamily="casual"
+                android:inputType="textNoSuggestions"
+                android:hint="Location" />
+
+
             <Button
                 android:id="@+id/button_group_create"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="casual"
-                android:text="Create Group"/>
+                android:text="Create Group"
+                android:onClick="createGroup"/>
 
 
         </LinearLayout>
