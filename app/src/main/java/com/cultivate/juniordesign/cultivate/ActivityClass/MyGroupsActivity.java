@@ -76,7 +76,7 @@ public class MyGroupsActivity extends HamburgerActivity {
         startActivity(group);
     }
 
-    public void goToLeaveGroup(View v) {
+    public void goToCreateGroup(View v) {
         Intent group = new Intent(this, CreateGroupActivity.class);
         group.putExtra("curUser", user);
         startActivity(group);
