@@ -3,6 +3,7 @@ package com.cultivate.juniordesign.cultivate.ActivityClass;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.Toast;
 
@@ -24,7 +25,8 @@ public class StubActivity extends HamburgerActivity {
     }
 
     public void openHamburgerBar(View v) {
-        super.openHamburgerBar(v, user);
+        ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.stub_layout);
+        super.openHamburgerBar(mainLayout, v, user);
     }
 
     public void goToStub(View v) {

@@ -2,6 +2,7 @@ package com.cultivate.juniordesign.cultivate.ActivityClass;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,7 +48,8 @@ public class GroupListActivity extends HamburgerActivity {
     }
 
     public void openHamburgerBar(View v) {
-        super.openHamburgerBar(v, user);
+        ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.group_list_layout);
+        super.openHamburgerBar(mainLayout, v, user);
     }
 
     public void goToStub(View v) {
