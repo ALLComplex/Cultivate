@@ -10,6 +10,8 @@ import android.widget.Toast;
 import com.cultivate.juniordesign.cultivate.Account;
 import com.cultivate.juniordesign.cultivate.R;
 
+import java.util.Map;
+
 /**
  * Created by Paul on 9/10/2017.
  */
@@ -29,6 +31,16 @@ public class MyGroupsActivity extends HamburgerActivity {
         user = getIntent().getParcelableExtra("curUser");
         setContentView(R.layout.activity_my_groups);
         isAdmin = checkIfAdmin();
+        Map<String, Boolean> groups = user.getMemberGroups();
+        String groupS = " ";
+        for (String group: groups.keySet()) {
+            groupS.concat(group + ", ");
+        }
+        if (groupS.equals(" ")) {
+            groupS = "None ";
+        }
+        TextView groupTextView = (TextView) findViewById(R.id.textView);
+        groupTextView.setText(groupS);
         //TextView adminTextView  = (TextView)findViewById(R.id.adminTextView);
         //adminTextView.setVisibility(output);
     }

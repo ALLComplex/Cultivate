@@ -26,6 +26,7 @@ public class GroupProfileActivity extends HamburgerActivity {
     private Group thisGroup = null;
     TextView adminTextView2;
     Button joinGroup;
+    Button adminRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +34,15 @@ public class GroupProfileActivity extends HamburgerActivity {
         setContentView(R.layout.activity_group_profile);
         user = getIntent().getParcelableExtra("curUser");
         thisGroup = getIntent().getParcelableExtra("curGroup");
-        adminTextView2  = (TextView) findViewById(R.id.adminTextView);
-        adminTextView2.setVisibility(output);
         isAdmin = checkIfAdmin();
         member = checkIfMember();
-
         joinGroup = (Button) findViewById(R.id.joinLeaveButton);
+        adminRequest = (Button) findViewById(R.id.adminButton);
         if (member) {
             joinGroup.setText("Leave Group");
+        }
+        if (!isAdmin) {
+            adminRequest.setText("Claim to be Admin");
         }
     }
 
