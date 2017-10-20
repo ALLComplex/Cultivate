@@ -88,11 +88,15 @@ public class MyGroupsActivity extends HamburgerActivity {
             lastButton = curButton;
             curButton = null;
         }
-        if (lastButton == null) {
-            groupS = "You are not a part of any groups";
-        }
         TextView groupTextView = (TextView) findViewById(R.id.textView);
-        groupTextView.setText(groupS);
+        if (lastButton == null) {
+            groupTextView.setText("You are not a part of any groups");
+        } else {
+            groupTextView.setText("");
+            groupTextView.setVisibility(View.INVISIBLE);
+        }
+
+
         //TextView adminTextView  = (TextView)findViewById(R.id.adminTextView);
         //adminTextView.setVisibility(output);
     }
@@ -161,7 +165,11 @@ public class MyGroupsActivity extends HamburgerActivity {
         startActivity(i);
     }
 
+
+
     public void notImplemented(View v) {
         Toast.makeText(MyGroupsActivity.this, "This feature is not yet implemented", Toast.LENGTH_SHORT).show();
     }
+
+
 }

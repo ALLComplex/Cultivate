@@ -70,8 +70,8 @@ public class CreateGroupActivity extends HamburgerActivity {
         String name = editTextName.getText().toString();
         String location = editTextLocation.getText().toString();
         Group group = new Group(name, location);
-        group.addMember(user);
-        group.addAdmin(user);
+        user.becomeAdmin(group);
+        user.becomeMember(group);
         FirebaseHandler db = new FirebaseHandler();
         db.pushGroupChange(group);
         goToGroupProfile(v, group);
