@@ -127,14 +127,21 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
+            <LinearLayout
+                android:id="@+id/ButtonLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.69"
+                android:orientation="vertical"></LinearLayout>
+
             <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.69"
-                android:text="Join a Group"
                 android:fontFamily="casual"
-                android:onClick="goToJoinGroup"/>
+                android:onClick="goToJoinGroup"
+                android:text="Join a Group" />
 
             <Button
                 android:id="@+id/button3"
