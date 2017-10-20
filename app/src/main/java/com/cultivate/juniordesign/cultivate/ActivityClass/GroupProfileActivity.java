@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.cultivate.juniordesign.cultivate.Account;
 import com.cultivate.juniordesign.cultivate.FirebaseHandler;
@@ -50,7 +51,6 @@ public class GroupProfileActivity extends HamburgerActivity {
         textView2.setText(thisGroup.getGroupName());
         TextView textLocation = (TextView) findViewById(R.id.groupLocation);
         textLocation.setText(thisGroup.getLocation());
-
     }
 
     public void openHamburgerBar(View v) {
@@ -143,6 +143,9 @@ public class GroupProfileActivity extends HamburgerActivity {
         } else {
             notImplemented(v);
         }
+        final FirebaseHandler db = new FirebaseHandler();
+        db.pushAccountChange(user);
+        db.pushGroupChange(thisGroup);
     }
 
     public void becomeAdmin() {
@@ -150,6 +153,17 @@ public class GroupProfileActivity extends HamburgerActivity {
         adminRequest.setText("Resign as admin");
         memberList.setVisibility(View.VISIBLE);
         isAdmin = true;
+    }
+
+    public void goToMemberList(View v) {
+        if (checkIfAdmin()) {
+            Intent member = new Intent(this, MembersListActivity.class);
+            member.putExtra("curUser", user);
+            member.putExtra("curGroup", thisGroup);
+            startActivity(member);
+        } else {
+            Toast.makeText(GroupProfileActivity.this, "You are not an admin. This feature is not accessible to you!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void notImplemented(View v) {

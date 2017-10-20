@@ -199,6 +199,7 @@ android:baselineAligned="false">
                 android:layout_height="wrap_content"
                 android:layout_weight="0.69"
                 android:fontFamily="casual"
+                android:onClick="goToMemberList"
                 android:text="Go to Member List"
                 android:textAlignment="center"
                 android:textAllCaps="false"
