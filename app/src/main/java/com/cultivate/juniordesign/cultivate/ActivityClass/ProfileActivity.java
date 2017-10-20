@@ -5,12 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cultivate.juniordesign.cultivate.Account;
+import com.cultivate.juniordesign.cultivate.FirebaseHandler;
 import com.cultivate.juniordesign.cultivate.R;
 import com.google.firebase.auth.FirebaseAuth;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by Paul on 9/10/2017.
@@ -18,17 +22,24 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileActivity extends HamburgerActivity {
     private Account user = null;
+    EditText profileName = null;
+    TextView profileEmail = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         user = getIntent().getParcelableExtra("curUser");
-        setContentView(R.layout.profile_stub);
+        setContentView(R.layout.activity_my_profile);
+
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        String email = mAuth.getCurrentUser().getEmail();
+        profileName = (EditText) findViewById(R.id.my_profile_name);
 
-        TextView view = (TextView) findViewById(R.id.textView3);
-        view.setText("Email: " + email);
+        profileEmail = (TextView) findViewById(R.id.my_profile_email);
+        String email = user.getEmail();
+        email = email.replace('_', '.');
 
+        profileName.setText(user.getName());
+        profileEmail.setText(email);
     }
 
     public void goToHome(View v) {
@@ -62,6 +73,22 @@ public class ProfileActivity extends HamburgerActivity {
 
     public void goToGroup(View v) {
         Intent group = new Intent(this, MyGroupsActivity.class);
+        group.putExtra("curUser", user);
+        startActivity(group);
+    }
+
+    public void updateUser(View v) {
+        String newName =  profileName.getText().toString();
+        //String newEmail = profileEmail.getText().toString();
+        user.setName(newName);
+        //user.setEmail(newEmail);
+        FirebaseHandler db = new FirebaseHandler();
+        db.pushAccountChange(user);
+        refreshPage(v);
+    }
+
+    public void refreshPage(View v) {
+        Intent group = new Intent(this, ProfileActivity.class);
         group.putExtra("curUser", user);
         startActivity(group);
     }
