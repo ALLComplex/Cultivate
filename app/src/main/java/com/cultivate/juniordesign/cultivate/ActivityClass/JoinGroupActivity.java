@@ -91,7 +91,7 @@ public class JoinGroupActivity extends HamburgerActivity {
                         db.pushGroupChange(group);
                         goToGroupProfilePage(v);
                     } else {
-                        //Toast "This group does not exist!"
+                        Toast.makeText(JoinGroupActivity.this, "This  group does not exist!", Toast.LENGTH_SHORT).show();
                         Log.d("ASSIGN TEMP VALUE", "Failure");
                     }
 
