@@ -23,11 +23,10 @@ public class GroupProfileActivity extends HamburgerActivity {
     private Account user = null;
     private boolean isAdmin = false;
     boolean member = false;
-    int output = View.VISIBLE;
     private Group thisGroup = null;
-    TextView adminTextView2;
     Button joinGroup;
     Button adminRequest;
+    Button memberList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +38,13 @@ public class GroupProfileActivity extends HamburgerActivity {
         member = checkIfMember();
         joinGroup = (Button) findViewById(R.id.joinLeaveButton);
         adminRequest = (Button) findViewById(R.id.adminButton);
+        memberList = (Button) findViewById(R.id.memberListButton);
         if (member) {
             joinGroup.setText("Leave Group");
         }
         if (!isAdmin) {
             adminRequest.setText("Claim to be Admin");
+            memberList.setVisibility(View.INVISIBLE);
         }
         TextView textView2 = (TextView) findViewById(R.id.textView2);
         textView2.setText(thisGroup.getGroupName());
@@ -62,6 +63,7 @@ public class GroupProfileActivity extends HamburgerActivity {
     }
 
     private boolean checkIfMember() {
+        //TODO this isn't working?
         return thisGroup.getGroupMembers().containsKey(user.getEmail());
     }
 
@@ -71,14 +73,11 @@ public class GroupProfileActivity extends HamburgerActivity {
         } else {
             goToJoinGroup(v);
         }
-        Intent group = new Intent(this, JoinGroupActivity.class);
-        group.putExtra("curUser", user);
-        startActivity(group);
     }
     //TODO throw up a toast for a "are you sure?"\
     private void goToLeaveGroup(View v) {
         if (thisGroup.getGroupAdmins().containsKey(user.getEmail())) {
-            //TOAST "Admins cannot leave a group!"
+            Toast.makeText(this, "Admins cannot leave a group!", Toast.LENGTH_SHORT).show();
         } else {
             HashMap<String, Boolean> memberList = (HashMap) thisGroup.getGroupMembers();
             memberList.remove(user.getEmail());
@@ -92,7 +91,7 @@ public class GroupProfileActivity extends HamburgerActivity {
             db.pushAccountChange(user);
             db.pushGroupChange(thisGroup);
 
-            Intent group = new Intent(this, GroupProfileActivity.class);
+            Intent group = new Intent(this, MyGroupsActivity.class);
             group.putExtra("curUser", user);
             startActivity(group);
         }
@@ -112,6 +111,46 @@ public class GroupProfileActivity extends HamburgerActivity {
         startActivity(group);
     }
 
+    public void goToHome(View v) {
+        Intent event = new Intent(this, MainActivity.class);
+        event.putExtra("curUser", user);
+        startActivity(event);
+    }
+
+    public void goToProfile(View v) {
+        Intent profile = new Intent(this, ProfileActivity.class);
+        profile.putExtra("curUser", user);
+        startActivity(profile);
+    }
+
+    public void goToGroup(View v) {
+        Intent group = new Intent(this, GroupProfileActivity.class);
+        group.putExtra("curUser", user);
+        startActivity(group);
+    }
+
+    /*
+    goes to the login screen; clears user data
+     */
+    public void goToLogout(View v) {
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+    }
+
+    public void goToClaimResignAdmin(View v) {
+        if (!isAdmin) {
+            becomeAdmin();
+        } else {
+            notImplemented(v);
+        }
+    }
+
+    public void becomeAdmin() {
+        user.becomeAdmin(thisGroup);
+        adminRequest.setText("Resign as admin");
+        memberList.setVisibility(View.VISIBLE);
+        isAdmin = true;
+    }
 
     public void notImplemented(View v) {
         Toast.makeText(GroupProfileActivity.this, "This feature is not yet implemented", Toast.LENGTH_SHORT).show();

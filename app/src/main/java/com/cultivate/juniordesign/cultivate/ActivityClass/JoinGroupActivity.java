@@ -86,7 +86,6 @@ public class JoinGroupActivity extends HamburgerActivity {
                     if (group != null) {
                         Log.d("ASSIGN TEMP VALUE", group.getLocation());
                         user.becomeMember(group);
-                        group.addMember(user);
                         db.pushAccountChange(user);
                         db.pushGroupChange(group);
                         goToGroupProfilePage(v);
