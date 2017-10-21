@@ -3,10 +3,14 @@ package com.cultivate.juniordesign.cultivate.ActivityClass;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cultivate.juniordesign.cultivate.Account;
+import com.cultivate.juniordesign.cultivate.Event;
+import com.cultivate.juniordesign.cultivate.Group;
 import com.cultivate.juniordesign.cultivate.R;
 
 /**
@@ -15,11 +19,24 @@ import com.cultivate.juniordesign.cultivate.R;
 
 public class EventActivity extends HamburgerActivity {
     private Account user = null;
+    private Event event = null;
+    TextView textView2;
+    TextView textLocation;
+    TextView textGroup;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         user = getIntent().getParcelableExtra("curUser");
+        event = getIntent().getParcelableExtra("curEvent");
         setContentView(R.layout.activity_event);
+        textView2 = (TextView) findViewById(R.id.eventName);
+        textView2.setText(event.getEventName());
+        textLocation = (TextView) findViewById(R.id.eventLocation);
+        textLocation.setText(event.getLocation());
+        textLocation = (TextView) findViewById(R.id.eventGroup);
+        textLocation.setText(event.getEventGroup());
+
     }
 
     /**
@@ -64,6 +81,28 @@ public class EventActivity extends HamburgerActivity {
         Intent group = new Intent(this, MyGroupsActivity.class);
         group.putExtra("curUser", user);
         startActivity(group);
+    }
+
+    public void goToMarkAsGoing(View v) {
+        if (event.getPeopleAttending().containsKey(user.getName())) {
+            //throw a toast "you are already attending the event!!"
+            Log.d("Already Attending", "User is already attending this event");
+            return;
+        } else {
+            user.attendEvent(event);
+            Log.d("Attending", "User is attending this event");
+        }
+    }
+
+    public void goToMarkAsNotGoing(View v) {
+        if (event.getPeopleNotAttending().containsKey(user.getName())) {
+            Log.d("Already Not Attending", "User is already not attending this event");
+            return;
+        } else {
+            user.notAttendEvent(event);
+            Log.d("Not Attending", "User is not attending this event");
+
+        }
     }
 
     /*

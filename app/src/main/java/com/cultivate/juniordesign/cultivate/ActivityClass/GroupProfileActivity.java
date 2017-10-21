@@ -166,6 +166,13 @@ public class GroupProfileActivity extends HamburgerActivity {
         }
     }
 
+    public void goToCreateEvent(View v) {
+        Intent member = new Intent(this, CreateEventActivity.class);
+        member.putExtra("curUser", user);
+        member.putExtra("curGroup", thisGroup);
+        startActivity(member);
+    }
+
     public void notImplemented(View v) {
         Toast.makeText(GroupProfileActivity.this, "This feature is not yet implemented", Toast.LENGTH_SHORT).show();
     }
