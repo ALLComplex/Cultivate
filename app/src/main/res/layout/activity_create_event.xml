@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/event_layout"
+    android:id="@+id/activity_create_event"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false">
@@ -11,9 +11,11 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="56dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="-8dp"
         android:background="@color/that_green"
         android:elevation="0dp"
-        android:hapticFeedbackEnabled="true"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintHorizontal_bias="0.0"
@@ -22,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:logo="@mipmap/ic_launcher"
         app:navigationIcon="@drawable/ic_action_name"
-        app:title="Stub Page" />
+        app:title="Create Event" />
 
     <ImageView
         android:id="@+id/invisibleButton"
@@ -49,27 +51,24 @@
         android:onClick="goToHome"
         android:layout_marginBottom="8dp" />
 
-
     <TextView
-    android:id="@+id/textView2"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_weight="0.69"
-    android:fontFamily="casual"
-    android:text="Event Page"
-    android:textAlignment="center"
-    android:textColor="@android:color/black"
-    android:textSize="36sp"
-    android:textStyle="bold"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/toolbar"
-    app:layout_constraintHorizontal_bias="0.0"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp" />
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="0.69"
+        android:fontFamily="casual"
+        android:text="Create a New Event"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -101,49 +100,43 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/eventName"
+                android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.69"
                 android:fontFamily="casual"
-                android:text="Name"
+                android:text="Please enter the following information:"
                 android:textAlignment="center" />
 
-            <TextView
-                android:id="@+id/eventLocation"
+            <EditText
+                android:id="@+id/editTextName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.69"
+                android:ems="10"
                 android:fontFamily="casual"
-                android:text="Location"
-                android:textAlignment="center" />
+                android:inputType="textPersonName"
+                android:hint="Event Name" />
 
-            <TextView
-                android:id="@+id/eventGroup"
+            <EditText
+                android:id="@+id/editTextLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.69"
+                android:ems="10"
                 android:fontFamily="casual"
-                android:text="GroupName"
-                android:textAlignment="center" />
+                android:inputType="textNoSuggestions"
+                android:hint="Event Location" />
+
 
             <Button
-                android:id="@+id/attendingButton"
+                android:id="@+id/button_event_create"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.69"
-                android:text="Mark as going"
+                android:layout_height="match_parent"
                 android:fontFamily="casual"
-                android:onClick="goToMarkAsGoing"/>
+                android:text="Create Event"
+                android:onClick="createEvent"/>
 
-            <Button
-                android:id="@+id/notAttendingButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.69"
-                android:text="Mark as not going"
-                android:fontFamily="casual"
-                android:onClick="goToMarkAsNotGoing"/>
 
         </LinearLayout>
     </ScrollView>
