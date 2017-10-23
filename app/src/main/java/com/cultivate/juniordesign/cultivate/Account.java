@@ -23,7 +23,9 @@ public class Account implements Parcelable {
     String email;
     Map<String, Boolean> memberGroups = new HashMap<String, Boolean>();
     Map<String, Boolean> manageGroups = new HashMap<String, Boolean>();
-    Map<String, Boolean> events = new HashMap<>();
+    Map<String, Boolean> eventsAttending = new HashMap<>();
+    Map<String, Boolean> eventsNotAttending = new HashMap<>();
+
 
     public Account(String mname, String memail, String mphone) {
         name = mname;
@@ -37,16 +39,27 @@ public class Account implements Parcelable {
         this(in.readString(), in.readString(), in.readString());
         List<String> memberList = new ArrayList<String>();
         List<String> adminList = new ArrayList<String>();
+        List<String> eventList = new ArrayList<String>();
+        List<String> notEventList = new ArrayList<String>();
+
 
         in.readList(memberList, null);
         in.readList(adminList, null);
+        in.readList(eventList, null);
+        in.readList(notEventList, null);
+
         for (String x: memberList) {
-           memberGroups.put(x, Boolean.TRUE);
+            memberGroups.put(x, Boolean.TRUE);
         }
         for (String x: adminList) {
             manageGroups.put(x, Boolean.TRUE);
         }
-
+        for (String x: eventList) {
+            eventsAttending.put(x, Boolean.TRUE);
+        }
+        for (String x: eventList) {
+            eventsNotAttending.put(x, Boolean.TRUE);
+        }
     }
 
     public Account() {
@@ -66,6 +79,9 @@ public class Account implements Parcelable {
         dest.writeString(phone);
         dest.writeList(new ArrayList(memberGroups.keySet()));
         dest.writeList(new ArrayList(manageGroups.keySet()));
+        dest.writeList(new ArrayList(eventsAttending.keySet()));
+        dest.writeList(new ArrayList(eventsNotAttending.keySet()));
+
 
     }
 
@@ -136,5 +152,29 @@ public class Account implements Parcelable {
         group.addMember(this);
     }
 
+    public void attendEvent(Event event) {
+        if (eventsNotAttending.containsKey(event.getEventName())) {
+            event.getPeopleAttending().remove(this.getName());
+            this.getEventsAttending().remove(event.getEventName());
+        }
+        eventsAttending.put(event.getEventName(), Boolean.TRUE);
+        event.addPersonAttending(this);
+    }
 
+    public void notAttendEvent(Event event) {
+        if (eventsAttending.containsKey(event.getEventName())) {
+            event.getPeopleNotAttending().remove(this.getName());
+            this.getEventsNotAttending().remove(event.getEventName());
+        }
+        eventsNotAttending.put(event.getEventName(), Boolean.TRUE);
+        event.addPersonNotAttending(this);
+    }
+
+    public Map<String, Boolean> getEventsAttending() {
+        return eventsAttending;
+    }
+
+    public Map<String, Boolean> getEventsNotAttending() {
+        return eventsNotAttending;
+    }
 }

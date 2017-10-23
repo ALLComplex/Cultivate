@@ -5,7 +5,9 @@ import android.os.Parcelable;
 
 import com.google.firebase.database.DatabaseReference;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -36,7 +38,18 @@ public class Event implements Parcelable{
     }
 
     private Event(Parcel in) {
-        this(in.readString(), in.readString(),in.readString());
+        this(in.readString(), in.readString(), in.readString());
+        List<String> attendingList = new ArrayList<String>();
+        List<String> notAttendList = new ArrayList<String>();
+
+        in.readList(attendingList, null);
+        in.readList(notAttendList, null);
+        for (String x: attendingList) {
+            peopleAttending.put(x, Boolean.TRUE);
+        }
+        for (String x: notAttendList) {
+            peopleNotAttending.put(x, Boolean.TRUE);
+        }
     }
 
 
@@ -49,7 +62,10 @@ public class Event implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(eventName);
-
+        dest.writeString(eventGroup);
+        dest.writeString(location);
+        dest.writeList(new ArrayList(peopleAttending.keySet()));
+        dest.writeList(new ArrayList(peopleNotAttending.keySet()));
     }
 
     public static final Parcelable.Creator<Event> CREATOR
