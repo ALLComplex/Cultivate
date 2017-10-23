@@ -83,7 +83,7 @@ public class MembersListActivity extends HamburgerActivity {
         }
         listS = listS.concat(a.getName());
         listS = listS.concat(":   ");
-        listS = listS.concat(a.getEmail());
+        listS = listS.concat(a.getEmail().replace('_', '.'));
         list.setText(listS);
     }
 

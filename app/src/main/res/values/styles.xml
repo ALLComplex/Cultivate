@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CultivateTheme" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="colorPrimary">@color/that_green</item>
+        <item name="colorPrimaryDark">@color/that_logo_goldenyellow</item>
+        <item name="colorAccent">@color/that_logo_brown</item>
+        <item name="android:colorBackground">@color/background_holo_light</item>
+        <item name="android:colorForeground">@color/bright_foreground_holo_light</item>
+        <item name="android:imageButtonStyle">@drawable/ic_action_name</item>
+    </style>
+
 </resources>

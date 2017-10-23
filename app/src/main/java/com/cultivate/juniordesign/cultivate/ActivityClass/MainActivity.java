@@ -24,7 +24,6 @@ public class MainActivity extends HamburgerActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         user = getIntent().getParcelableExtra("curUser");
-
         Snackbar mySnackbar = Snackbar.make((findViewById(R.id.home_layout)), "Welcome to the Homepage", 1000);
         mySnackbar.show();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();

@@ -3,6 +3,7 @@ package com.cultivate.juniordesign.cultivate.ActivityClass;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,10 +11,15 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.cultivate.juniordesign.cultivate.Account;
+import com.cultivate.juniordesign.cultivate.Event;
 import com.cultivate.juniordesign.cultivate.FirebaseHandler;
+import com.cultivate.juniordesign.cultivate.GetDataListener;
 import com.cultivate.juniordesign.cultivate.Group;
 import com.cultivate.juniordesign.cultivate.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -25,9 +31,15 @@ public class GroupProfileActivity extends HamburgerActivity {
     private boolean isAdmin = false;
     boolean member = false;
     private Group thisGroup = null;
+    private ArrayList<Event> events;
     Button joinGroup;
     Button adminRequest;
     Button memberList;
+    Button createEvent;
+    String eventListInfo;
+    TextView eventInfo;
+    TextView groupName;
+    TextView groupLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +52,59 @@ public class GroupProfileActivity extends HamburgerActivity {
         joinGroup = (Button) findViewById(R.id.joinLeaveButton);
         adminRequest = (Button) findViewById(R.id.adminButton);
         memberList = (Button) findViewById(R.id.memberListButton);
+        createEvent = (Button) findViewById(R.id.createEventButton);
         if (member) {
             joinGroup.setText("Leave Group");
         }
         if (!isAdmin) {
             adminRequest.setText("Claim to be Admin");
             memberList.setVisibility(View.INVISIBLE);
+            createEvent.setVisibility(View.INVISIBLE);
         }
-        TextView textView2 = (TextView) findViewById(R.id.textView2);
-        textView2.setText(thisGroup.getGroupName());
-        TextView textLocation = (TextView) findViewById(R.id.groupLocation);
-        textLocation.setText(thisGroup.getLocation());
+        groupName = (TextView) findViewById(R.id.textView2);
+        groupName.setText(thisGroup.getGroupName());
+        groupLocation = (TextView) findViewById(R.id.groupLocation);
+        groupLocation.setText(thisGroup.getLocation());
+        events = new ArrayList<>();
+        eventInfo = (TextView) findViewById(R.id.eventListText);
+        eventListInfo = "";
+        for (String event: thisGroup.getEvents().keySet()) {
+            FirebaseHandler db = new FirebaseHandler();
+            db.getEvent(event, new GetDataListener(){
+                @Override
+                public void onStart() {
+                    Log.d("STARTED", "Started");
+                }
+
+                @Override
+                public void onSuccess(DataSnapshot data) {
+                    Event e = data.getValue(Event.class);
+                    if (e != null) {
+                        Log.d("ASSIGN TEMP VALUE", e.getLocation());
+                        addEvent(e);
+                    } else {
+                        Toast.makeText(GroupProfileActivity.this, "This event does not exist!", Toast.LENGTH_SHORT).show();
+                        Log.d("ASSIGN TEMP VALUE", "Failure");
+                    }
+                }
+
+                @Override
+                public void onFailed(DatabaseError databaseError) {
+                    Log.d("FAILURE", "fail");
+                }
+            });
+        }
+        if (events.size() == 0) {
+            eventInfo.setText("No upcoming events");
+        }
+    }
+
+    public void addEvent(Event e) {
+        events.add(e);
+        eventListInfo = eventListInfo.concat("\nName: " + e.getEventName());
+        eventListInfo = eventListInfo.concat("\nLocation: " + e.getLocation());
+        eventListInfo = eventListInfo.concat("\n");
+        eventInfo.setText(eventListInfo);
     }
 
     public void openHamburgerBar(View v) {
@@ -154,6 +208,7 @@ public class GroupProfileActivity extends HamburgerActivity {
         memberList.setVisibility(View.VISIBLE);
         isAdmin = true;
     }
+
 
     public void goToMemberList(View v) {
         if (checkIfAdmin()) {

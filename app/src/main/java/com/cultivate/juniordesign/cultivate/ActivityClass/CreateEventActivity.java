@@ -74,9 +74,11 @@ public class CreateEventActivity extends HamburgerActivity {
         String location = editTextLocation.getText().toString();
         Event event = new Event(name, aGroup.getGroupName(), location);
         user.attendEvent(event);
+        aGroup.addEvent(event);
         FirebaseHandler db = new FirebaseHandler();
         db.pushAccountChange(user);
         db.pushEventChange(event);
+        db.pushGroupChange(aGroup);
         goToEventActivity(v, event);
        // goToGroupProfile(v, aGroup);
     }

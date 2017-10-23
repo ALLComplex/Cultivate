@@ -36,6 +36,8 @@ public class EventActivity extends HamburgerActivity {
         textLocation.setText(event.getLocation());
         textLocation = (TextView) findViewById(R.id.eventGroup);
         textLocation.setText(event.getEventGroup());
+        //textLocation = (TextView) findViewById(R.id.eventTime);
+        //textLocation.setText(event.);
 
     }
 

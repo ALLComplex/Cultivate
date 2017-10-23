@@ -24,6 +24,7 @@ public class ProfileActivity extends HamburgerActivity {
     private Account user = null;
     EditText profileName = null;
     TextView profileEmail = null;
+    TextView profilePhone = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +36,11 @@ public class ProfileActivity extends HamburgerActivity {
         profileName = (EditText) findViewById(R.id.my_profile_name);
 
         profileEmail = (TextView) findViewById(R.id.my_profile_email);
+        profilePhone = (TextView) findViewById(R.id.my_profile_phone);
         String email = user.getEmail();
         email = email.replace('_', '.');
 
+        profilePhone.setText(user.getPhone());
         profileName.setText(user.getName());
         profileEmail.setText(email);
     }
@@ -79,8 +82,10 @@ public class ProfileActivity extends HamburgerActivity {
 
     public void updateUser(View v) {
         String newName =  profileName.getText().toString();
+        String newPhone = profilePhone.getText().toString();
         //String newEmail = profileEmail.getText().toString();
         user.setName(newName);
+        user.setPhone(newPhone);
         //user.setEmail(newEmail);
         FirebaseHandler db = new FirebaseHandler();
         db.pushAccountChange(user);
