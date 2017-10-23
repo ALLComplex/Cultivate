@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:logo="@mipmap/ic_launcher"
         app:navigationIcon="@drawable/ic_action_name"
-        app:title="Stub Page" />
+        app:title="View Event" />
 
     <ImageView
         android:id="@+id/invisibleButton"
@@ -107,7 +107,18 @@
                 android:layout_weight="0.69"
                 android:fontFamily="casual"
                 android:text="Name"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/eventTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.69"
+                android:fontFamily="casual"
+                android:text="Time"
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/eventLocation"
@@ -116,7 +127,8 @@
                 android:layout_weight="0.69"
                 android:fontFamily="casual"
                 android:text="Location"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/eventGroup"
@@ -125,7 +137,8 @@
                 android:layout_weight="0.69"
                 android:fontFamily="casual"
                 android:text="GroupName"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/attendingButton"

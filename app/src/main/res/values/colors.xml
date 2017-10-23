@@ -6,4 +6,6 @@
     <color name="that_green">#55c523</color>
     <color name="that_logo_brown">#b45f06</color>
     <color name="that_logo_goldenyellow">#fdda04</color>
+    <color name="background_holo_light">#f3f3f3</color>
+    <color name="bright_foreground_holo_light">#000000</color>
 </resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CultivateTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/that_green</item>
+        <item name="colorPrimaryDark">@color/that_logo_goldenyellow</item>
+        <item name="colorAccent">@color/that_logo_brown</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:colorPrimary">@color/that_green</item>
+        <item name="android:fontFamily">casual</item>
+        <item name="android:colorPrimaryDark">@color/that_logo_goldenyellow</item>
+        <item name="android:colorBackground">@color/background_holo_light</item>
+        <item name="android:colorForeground">@color/bright_foreground_holo_light</item>
+    </style>
+</resources>
