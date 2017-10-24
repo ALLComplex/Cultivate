@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/my_groups_layout"
+    android:id="@+id/member_list_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false">
@@ -33,26 +33,26 @@
         android:layout_height="30dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="12dp"
+        android:contentDescription="Invisible Quick Tools Button"
+        android:onClick="openHamburgerBar"
         app:layout_constraintLeft_toLeftOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/transparent"
-        android:onClick="openHamburgerBar"
-        android:contentDescription="Invisible Quick Tools Button" />
+        app:srcCompat="@android:color/transparent" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/that_green"
-        app:srcCompat="@drawable/ic_home"
+        android:layout_marginBottom="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/that_green"
+        android:contentDescription="Home Page Button"
+        android:onClick="goToHome"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintRight_toRightOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        android:onClick="goToHome"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="Home Page Button" />
+        app:srcCompat="@drawable/ic_home" />
 
     <TextView
         android:id="@+id/title"
@@ -77,17 +77,17 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintTop_toBottomOf="@+id/title"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp">
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"

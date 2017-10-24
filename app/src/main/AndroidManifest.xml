@@ -47,6 +47,7 @@
         <activity android:name=".ActivityClass.GroupProfileActivity"></activity>
         <activity android:name=".ActivityClass.MembersListActivity"></activity>
         <activity android:name=".ActivityClass.CreateEventActivity"></activity>
+        <activity android:name=".ActivityClass.MyEventsActivity"></activity>
     </application>
 
 </manifest>

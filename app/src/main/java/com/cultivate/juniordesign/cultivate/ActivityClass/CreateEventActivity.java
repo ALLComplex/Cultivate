@@ -18,7 +18,6 @@ import com.cultivate.juniordesign.cultivate.R;
  */
 
 public class CreateEventActivity extends HamburgerActivity {
-    private Account user = null;
     private Group aGroup = null;
     private EditText editTextName;
     private EditText editTextLocation;
@@ -26,46 +25,13 @@ public class CreateEventActivity extends HamburgerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        user = getIntent().getParcelableExtra("curUser");
-        aGroup = getIntent().getParcelableExtra("curGroup");
         setContentView(R.layout.activity_create_event);
+        user = getIntent().getParcelableExtra("curUser");
+        mainLayout = (ConstraintLayout) findViewById(R.id.create_group_layout);
+        aGroup = getIntent().getParcelableExtra("curGroup");
+
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextLocation = (EditText) findViewById(R.id.editTextLocation);
-    }
-
-    public void goToHome(View v) {
-        Intent event = new Intent(this, MainActivity.class);
-        event.putExtra("curUser", user);
-        startActivity(event);
-    }
-
-    public void openHamburgerBar(View v) {
-        ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.create_group_layout);
-        super.openHamburgerBar(mainLayout, v, user);
-    }
-
-    public void goToStub(View v) {
-        Intent stub = new Intent(this, StubActivity.class);
-        stub.putExtra("curUser", user);
-        startActivity(stub);
-    }
-
-    public void goToEvent(View v) {
-        Intent event = new Intent(this, EventActivity.class);
-        event.putExtra("curUser", user);
-        startActivity(event);
-    }
-
-    public void goToProfile(View v) {
-        Intent profile = new Intent(this, ProfileActivity.class);
-        profile.putExtra("curUser", user);
-        startActivity(profile);
-    }
-
-    public void goToGroup(View v) {
-        Intent group = new Intent(this, MyGroupsActivity.class);
-        group.putExtra("curUser", user);
-        startActivity(group);
     }
 
     public void createEvent(View v) {
@@ -97,15 +63,4 @@ public class CreateEventActivity extends HamburgerActivity {
         startActivity(group);
     }
 
-    /*
-    goes to the login screen; clears user data
-     */
-    public void goToLogout(View v) {
-        Intent i = new Intent(this, LoginActivity.class);
-        startActivity(i);
-    }
-
-    public void notImplemented(View v) {
-        Toast.makeText(CreateEventActivity.this, "This feature is not yet implemented", Toast.LENGTH_SHORT).show();
-    }
 }
