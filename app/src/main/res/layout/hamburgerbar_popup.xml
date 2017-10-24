@@ -42,7 +42,7 @@
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:onClick="goToGroup"
+        android:onClick="goToMyGroups"
         android:textSize="24sp" />
 
     <TextView
@@ -52,23 +52,23 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/groupPage"
-        android:onClick="goToGroup"
         android:fontFamily="casual"
-        android:text="More Groups"
+        android:onClick="goToMyGroups"
+        android:text="More of My Groups"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/Calendar"
+        android:id="@+id/myEvents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/moreGroups"
         android:fontFamily="casual"
-        android:text="Calendar"
+        android:text="My Events"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:onClick="notImplemented"
+        android:onClick="goToMyEvents"
         android:textSize="24sp" />
 
     <TextView
@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/Calendar"
+        android:layout_below="@+id/myEvents"
         android:fontFamily="casual"
         android:text="user-name"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
@@ -91,7 +91,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/userName"
-        android:onClick="goToProfile"
+        android:onClick="goToMyProfile"
         android:layout_marginLeft="30dp"
         android:fontFamily="casual"
         android:text="My Profile"

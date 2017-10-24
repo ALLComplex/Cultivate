@@ -11,57 +11,11 @@ import com.cultivate.juniordesign.cultivate.Account;
 import com.cultivate.juniordesign.cultivate.R;
 
 public class StubActivity extends HamburgerActivity {
-    private Account user = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         user = getIntent().getParcelableExtra("curUser");
         setContentView(R.layout.activity_stub);
-    }
-    public void goToHome(Account user) {
-        Intent event = new Intent(this, MainActivity.class);
-        event.putExtra("curUser", user);
-        startActivity(event);
-    }
-
-    public void openHamburgerBar(View v) {
-        ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.stub_layout);
-        super.openHamburgerBar(mainLayout, v, user);
-    }
-
-    public void goToStub(View v) {
-        Intent stub = new Intent(this, StubActivity.class);
-        stub.putExtra("curUser", user);
-        startActivity(stub);
-    }
-
-    public void goToEvent(View v) {
-        Intent event = new Intent(this, EventActivity.class);
-        event.putExtra("curUser", user);
-        startActivity(event);
-    }
-
-    public void goToProfile(View v) {
-        Intent profile = new Intent(this, ProfileActivity.class);
-        profile.putExtra("curUser", user);
-        startActivity(profile);
-    }
-
-    public void goToGroup(View v) {
-        Intent group = new Intent(this, MyGroupsActivity.class);
-        group.putExtra("curUser", user);
-        startActivity(group);
-    }
-
-    /*
-    goes to the login screen; clears user data
-     */
-    public void goToLogout(View v) {
-        Intent i = new Intent(this, LoginActivity.class);
-        startActivity(i);
-    }
-
-    public void notImplemented(View v) {
-        Toast.makeText(StubActivity.this, "This feature is not yet implemented", Toast.LENGTH_SHORT).show();
+        mainLayout = (ConstraintLayout) findViewById(R.id.stub_layout);
     }
 }

@@ -26,7 +26,6 @@ import java.util.Set;
  */
 
 public class MembersListActivity extends HamburgerActivity {
-    private Account user = null;
     private Group thisGroup = null;
     FirebaseHandler db;
     TextView title;
@@ -34,12 +33,12 @@ public class MembersListActivity extends HamburgerActivity {
     Set<Account> members = new HashSet<>();
     String listS;
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         user = getIntent().getParcelableExtra("curUser");
         thisGroup = getIntent().getParcelableExtra("curGroup");
         setContentView(R.layout.activity_member_list);
+        mainLayout = (ConstraintLayout) findViewById(R.id.member_list_layout);
         title = (TextView) findViewById(R.id.title);
         title.setText(thisGroup.getGroupName().concat("'s Member List"));
         list = (TextView) findViewById(R.id.list);
@@ -85,40 +84,5 @@ public class MembersListActivity extends HamburgerActivity {
         listS = listS.concat(":   ");
         listS = listS.concat(a.getEmail().replace('_', '.'));
         list.setText(listS);
-    }
-
-    public void openHamburgerBar(View v) {
-        ConstraintLayout mainLayout = (ConstraintLayout) findViewById(R.id.group_profile_layout);
-        super.openHamburgerBar(mainLayout, v, user);
-    }
-
-    public void goToHome(View v) {
-        Intent event = new Intent(this, MainActivity.class);
-        event.putExtra("curUser", user);
-        startActivity(event);
-    }
-
-    public void goToProfile(View v) {
-        Intent profile = new Intent(this, ProfileActivity.class);
-        profile.putExtra("curUser", user);
-        startActivity(profile);
-    }
-
-    public void goToGroup(View v) {
-        Intent group = new Intent(this, GroupProfileActivity.class);
-        group.putExtra("curUser", user);
-        startActivity(group);
-    }
-
-    /*
-    goes to the login screen; clears user data
-     */
-    public void goToLogout(View v) {
-        Intent i = new Intent(this, LoginActivity.class);
-        startActivity(i);
-    }
-
-    public void notImplemented(View v) {
-        Toast.makeText(MembersListActivity.this, "This feature is not yet implemented", Toast.LENGTH_SHORT).show();
     }
 }
