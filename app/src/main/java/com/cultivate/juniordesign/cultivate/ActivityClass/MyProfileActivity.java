@@ -20,7 +20,7 @@ import org.w3c.dom.Text;
  * Created by Paul on 9/10/2017.
  */
 
-public class ProfileActivity extends HamburgerActivity {
+public class MyProfileActivity extends HamburgerActivity {
     EditText profileName = null;
     TextView profileEmail = null;
     TextView profilePhone = null;
@@ -56,7 +56,7 @@ public class ProfileActivity extends HamburgerActivity {
     }
 
     public void refreshPage(View v) {
-        Intent group = new Intent(this, ProfileActivity.class);
+        Intent group = new Intent(this, MyProfileActivity.class);
         group.putExtra("curUser", user);
         startActivity(group);
     }
