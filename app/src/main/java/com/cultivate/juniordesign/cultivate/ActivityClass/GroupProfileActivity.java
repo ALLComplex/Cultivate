@@ -135,7 +135,7 @@ public class GroupProfileActivity extends HamburgerActivity {
 
             HashMap<String, Boolean> groupList = (HashMap) user.getMemberGroups();
             groupList.remove(thisGroup.getGroupName());
-            user.setMemberGroups(memberList);
+            user.setMemberGroups(groupList);
 
             final FirebaseHandler db = new FirebaseHandler();
             db.pushAccountChange(user);

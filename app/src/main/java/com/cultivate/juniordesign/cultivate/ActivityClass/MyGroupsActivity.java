@@ -24,7 +24,6 @@ import java.util.Map;
 /**
  * Created by Paul on 9/10/2017.
  */
-
 public class MyGroupsActivity extends HamburgerActivity {
 
     @Override
@@ -92,12 +91,20 @@ public class MyGroupsActivity extends HamburgerActivity {
         //adminTextView.setVisibility(output);
     }
 
+    /**
+     * Starts the create group activity where the user may create a new group
+     * @param v the view which is automatically passed in by the button
+     */
     public void goToCreateGroup(View v) {
         Intent group = new Intent(this, CreateGroupActivity.class);
         group.putExtra("curUser", user);
         startActivity(group);
     }
 
+    /**
+     * Starts the create
+     * @param v the view which is automatically passed in by the button
+     */
     public void goToJoinGroup(View v) {
         Intent group = new Intent(this, JoinGroupActivity.class);
         group.putExtra("curUser", user);
