@@ -44,21 +44,13 @@ public class CreateEventActivity extends HamburgerActivity {
         updateEvent(event);
         updateGroup(curGroup);
         goToEventActivity(v, event);
-       // goToGroupProfile(v, curGroup);
     }
 
-    private void goToGroupProfile(View v, Group g) {
-        Intent group = new Intent(this, GroupProfileActivity.class);
-        group.putExtra("curGroup", g);
-        group.putExtra("curUser", user);
-        startActivity(group);
-    }
-
-    private void goToEventActivity(View v, Event e) {
-        Intent group = new Intent(this, EventActivity.class);
-        group.putExtra("curUser", user);
-        group.putExtra("curEvent", e);
-        startActivity(group);
+    public void goToEventActivity(View v, Event e) {
+        Intent event = new Intent(this, EventActivity.class);
+        event.putExtra("curUser", user);
+        event.putExtra("curEvent", e);
+        startActivity(event);
     }
 
 }

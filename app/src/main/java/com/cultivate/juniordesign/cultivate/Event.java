@@ -34,7 +34,8 @@ public class Event implements Parcelable{
     }
 
     public Event(){
-
+        peopleAttending = new HashMap<String, Boolean>();
+        peopleNotAttending = new HashMap<String, Boolean>();
     }
 
     private Event(Parcel in) {
@@ -64,6 +65,10 @@ public class Event implements Parcelable{
         dest.writeString(eventName);
         dest.writeString(eventGroup);
         dest.writeString(location);
+        if (peopleAttending == null || peopleNotAttending == null) {
+            peopleAttending = new HashMap<String, Boolean>();
+            peopleNotAttending = new HashMap<String, Boolean>();
+        }
         dest.writeList(new ArrayList(peopleAttending.keySet()));
         dest.writeList(new ArrayList(peopleNotAttending.keySet()));
     }

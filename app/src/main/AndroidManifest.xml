@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Design.Light.NoActionBar">
+        android:theme="@style/CultivateTheme">
 
         <activity
             android:name=".ActivityClass.LoginActivity"
@@ -24,9 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ActivityClass.EventActivity">
-        </activity>
+        <activity android:name=".ActivityClass.EventActivity"></activity>
         <activity
             android:name=".ActivityClass.MyGroupsActivity">
         </activity>
