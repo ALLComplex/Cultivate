@@ -51,11 +51,13 @@ public class EventActivity extends HamburgerActivity {
 
     public void goToMarkAsGoing(View v) {
         if (event.getPeopleAttending().containsKey(user.getName())) {
-            //throw a toast "you are already attending the event!!"
+            //throw a toast\ "you are already attending the event!!"
             Log.d("Already Attending", "User is already attending this event");
             return;
         } else {
             user.attendEvent(event);
+            updateUser(user);
+            updateEvent(event);
             Log.d("Attending", "User is attending this event");
         }
     }
@@ -66,6 +68,8 @@ public class EventActivity extends HamburgerActivity {
             return;
         } else {
             user.notAttendEvent(event);
+            updateUser(user);
+            updateEvent(event);
             Log.d("Not Attending", "User is not attending this event");
 
         }

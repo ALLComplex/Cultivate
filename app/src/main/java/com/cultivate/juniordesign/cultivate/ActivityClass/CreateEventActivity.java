@@ -18,7 +18,7 @@ import com.cultivate.juniordesign.cultivate.R;
  */
 
 public class CreateEventActivity extends HamburgerActivity {
-    private Group aGroup = null;
+    private Group curGroup = null;
     private EditText editTextName;
     private EditText editTextLocation;
 
@@ -28,8 +28,7 @@ public class CreateEventActivity extends HamburgerActivity {
         setContentView(R.layout.activity_create_event);
         user = getIntent().getParcelableExtra("curUser");
         mainLayout = (ConstraintLayout) findViewById(R.id.create_group_layout);
-        aGroup = getIntent().getParcelableExtra("curGroup");
-
+        curGroup = getIntent().getParcelableExtra("curGroup");
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextLocation = (EditText) findViewById(R.id.editTextLocation);
     }
@@ -38,15 +37,14 @@ public class CreateEventActivity extends HamburgerActivity {
         //TODO: check if group name exists.
         String name = editTextName.getText().toString();
         String location = editTextLocation.getText().toString();
-        Event event = new Event(name, aGroup.getGroupName(), location);
+        Event event = new Event(name, curGroup.getGroupName(), location);
         user.attendEvent(event);
-        aGroup.addEvent(event);
-        FirebaseHandler db = new FirebaseHandler();
-        db.pushAccountChange(user);
-        db.pushEventChange(event);
-        db.pushGroupChange(aGroup);
+        curGroup.addEvent(event);
+        updateUser(user);
+        updateEvent(event);
+        updateGroup(curGroup);
         goToEventActivity(v, event);
-       // goToGroupProfile(v, aGroup);
+       // goToGroupProfile(v, curGroup);
     }
 
     private void goToGroupProfile(View v, Group g) {

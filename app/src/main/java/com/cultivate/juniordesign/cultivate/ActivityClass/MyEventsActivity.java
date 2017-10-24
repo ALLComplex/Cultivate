@@ -35,8 +35,7 @@ public class MyEventsActivity extends HamburgerActivity {
         eventText = "";
         eventTextView = (TextView) findViewById(R.id.textEventList);
         for(String str: user.getEventsAttending().keySet()) {
-            FirebaseHandler db = new FirebaseHandler();
-            db.getEvent(str, new GetDataListener(){
+            database.getEvent(str, new GetDataListener(){
                 @Override
                 public void onStart() {
                     Log.d("STARTED", "Started");

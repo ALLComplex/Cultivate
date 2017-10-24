@@ -12,7 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cultivate.juniordesign.cultivate.Account;
+import com.cultivate.juniordesign.cultivate.Event;
+import com.cultivate.juniordesign.cultivate.FirebaseHandler;
+import com.cultivate.juniordesign.cultivate.Group;
 import com.cultivate.juniordesign.cultivate.R;
+import com.google.firebase.database.DatabaseReference;
 
 /**
  * Created by Forrest on 10/13/2017.
@@ -21,6 +25,7 @@ import com.cultivate.juniordesign.cultivate.R;
 public class HamburgerActivity extends AppCompatActivity {
     protected Account user;
     protected ConstraintLayout mainLayout;
+    protected FirebaseHandler database = new FirebaseHandler();
 
     /**
      * opens the Quick Tools Sidebar
@@ -91,6 +96,30 @@ public class HamburgerActivity extends AppCompatActivity {
         Intent event = new Intent(this, MainActivity.class);
         event.putExtra("curUser", user);
         startActivity(event);
+    }
+
+    /**
+     * Updates the given user in the database
+     * @param curUser the updated user to change in the database
+     */
+    public void updateUser(Account curUser) {
+        database.pushAccountChange(curUser);
+    }
+
+    /**
+     * Updates the given Group in the database
+     * @param curGroup the updated group to change in the database
+     */
+    public void updateGroup(Group curGroup) {
+        database.pushGroupChange(curGroup);
+    }
+
+    /**
+     * Updates the given Event in the database
+     * @param curEvent the updated event to change in the database
+     */
+    public void updateEvent(Event curEvent) {
+        database.pushEventChange(curEvent);
     }
 
     /**

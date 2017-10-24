@@ -45,8 +45,7 @@ public class MyGroupsActivity extends HamburgerActivity {
                 public void onClick(View v) {
                     //find group by
                     String groupText = ((Button) v).getText().toString();
-                    FirebaseHandler db = new FirebaseHandler();
-                    db.getGroup(groupText, new GetDataListener(){
+                    database.getGroup(groupText, new GetDataListener(){
                         @Override
                         public void onStart() {
                             Log.d("STARTED", "Started");

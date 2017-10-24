@@ -34,12 +34,11 @@ public class JoinGroupActivity extends HamburgerActivity {
     }
 
     public void goToJoinGroup(final View v) {
-        final FirebaseHandler db = new FirebaseHandler();
         String s = mSearchView.getQuery().toString();
         if (user.getMemberGroups().containsKey(s)) {
             //toast that user is already a part of the group!
         } else {
-            db.getGroup(s, new GetDataListener() {
+            database.getGroup(s, new GetDataListener() {
                 @Override
                 public void onStart() {
                     Log.d("STARTED", "Started");
@@ -51,8 +50,8 @@ public class JoinGroupActivity extends HamburgerActivity {
                     if (group != null) {
                         Log.d("ASSIGN TEMP VALUE", group.getLocation());
                         user.becomeMember(group);
-                        db.pushAccountChange(user);
-                        db.pushGroupChange(group);
+                        updateUser(user);
+                        updateGroup(group);
                         goToGroupProfilePage(v);
                     } else {
                         Toast.makeText(JoinGroupActivity.this, "This  group does not exist!", Toast.LENGTH_SHORT).show();
@@ -69,7 +68,6 @@ public class JoinGroupActivity extends HamburgerActivity {
             });
         }
     }
-
 
     public void goToGroupProfilePage(View v) {
         Intent groupProfile = new Intent(this, MyGroupsActivity.class);
