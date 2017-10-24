@@ -25,16 +25,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ActivityClass.StubActivity">
-        </activity>
-        <activity
             android:name=".ActivityClass.EventActivity">
         </activity>
         <activity
             android:name=".ActivityClass.MyGroupsActivity">
         </activity>
         <activity
-            android:name=".ActivityClass.ProfileActivity">
+            android:name=".ActivityClass.MyProfileActivity">
         </activity>
         <activity
             android:name=".ActivityClass.MainActivity">
