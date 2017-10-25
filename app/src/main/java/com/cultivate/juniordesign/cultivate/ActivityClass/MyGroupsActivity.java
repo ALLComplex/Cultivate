@@ -78,11 +78,8 @@ public class MyGroupsActivity extends HamburgerActivity {
             lastButton = curButton;
         }
         TextView groupTextView = (TextView) findViewById(R.id.textView);
-        if (lastButton == null) {
-            groupTextView.setText("You are not a part of any groups");
-        } else {
-            groupTextView.setText("");
-            groupTextView.setVisibility(View.INVISIBLE);
+        if (lastButton != null) {
+            groupTextView.setVisibility(View.GONE);
         }
 
 

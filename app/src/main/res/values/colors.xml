@@ -8,4 +8,6 @@
     <color name="that_logo_goldenyellow">#fdda04</color>
     <color name="background_holo_light">#f3f3f3</color>
     <color name="bright_foreground_holo_light">#000000</color>
+    <color name="that_dark_green">#2f6f12</color>
+    <color name="that_light_goldenyellow">#fefcec</color>
 </resources>

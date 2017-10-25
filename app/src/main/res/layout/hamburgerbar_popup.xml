@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/that_green">
+    android:background="@color/that_green"
+    android:elevation="24dp">
 
     <TextView
         android:id="@+id/title"
@@ -26,9 +26,9 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_action_name"
+        android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/title"
-        android:layout_alignParentRight="true"/>
+        app:srcCompat="@drawable/ic_action_name" />
 
     <TextView
         android:id="@+id/groupPage"
@@ -38,11 +38,11 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/title"
         android:fontFamily="casual"
+        android:onClick="goToMyGroups"
         android:text="Group Page"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:onClick="goToMyGroups"
         android:textSize="24sp" />
 
     <TextView
@@ -66,9 +66,9 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/moreGroups"
         android:fontFamily="casual"
+        android:onClick="goToMyEvents"
         android:text="My Events"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:onClick="goToMyEvents"
         android:textSize="24sp" />
 
     <TextView
@@ -79,9 +79,9 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/myEvents"
         android:fontFamily="casual"
+        android:onClick="notImplemented"
         android:text="user-name"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:onClick="notImplemented"
         android:textSize="24sp" />
 
     <TextView
@@ -91,9 +91,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/userName"
-        android:onClick="goToMyProfile"
         android:layout_marginLeft="30dp"
         android:fontFamily="casual"
+        android:onClick="goToMyProfile"
         android:text="My Profile"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="20sp" />
@@ -107,9 +107,9 @@
         android:layout_below="@+id/myProfile"
         android:layout_marginLeft="30dp"
         android:fontFamily="casual"
+        android:onClick="notImplemented"
         android:text="My Attendance"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:onClick="notImplemented"
         android:textSize="20sp" />
 
     <TextView
@@ -119,11 +119,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/myAttendance"
-        android:fontFamily="casual"
         android:layout_marginLeft="30dp"
+        android:fontFamily="casual"
+        android:onClick="goToLogout"
         android:text="Log Out"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:onClick="goToLogout"
         android:textSize="20sp" />
 
     <TextView
@@ -134,9 +134,9 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/logOut"
         android:fontFamily="casual"
+        android:onClick="notImplemented"
         android:text="Settings"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:onClick="notImplemented"
         android:textSize="18sp" />
 
     <TextView
@@ -147,27 +147,27 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/settings"
         android:fontFamily="casual"
+        android:onClick="notImplemented"
         android:text="Feedback and Support"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:onClick="notImplemented"
         android:textSize="18sp" />
 
     <Space
         android:id="@+id/space1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
-        android:layout_toRightOf="@+id/title"
-        android:layout_alignParentTop="true" />
+        android:layout_toRightOf="@+id/title" />
 
     <Space
         android:id="@+id/space2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_marginTop="14dp"
-        android:layout_toRightOf="@+id/space1"
-        android:layout_alignParentTop="true" />
+        android:layout_toRightOf="@+id/space1" />
 
     <Space
         android:id="@+id/space3"
@@ -190,20 +190,20 @@
         android:id="@+id/imageView4"
         android:layout_width="3dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        app:srcCompat="@color/that_logo_brown"
-        android:layout_alignParentTop="true"
         android:layout_alignBottom="@+id/imageView5"
-        android:elevation="4dp"/>
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:elevation="4dp"
+        app:srcCompat="@color/that_logo_brown" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_alignParentRight="true"
-        app:srcCompat="@color/that_logo_brown"
         android:layout_alignBottom="@+id/feedback"
-        android:elevation="4dp"/>
+        android:layout_alignParentRight="true"
+        android:elevation="4dp"
+        app:srcCompat="@color/that_logo_brown" />
 
 
 </RelativeLayout>

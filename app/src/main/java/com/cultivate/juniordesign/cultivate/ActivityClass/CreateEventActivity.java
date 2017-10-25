@@ -27,7 +27,7 @@ public class CreateEventActivity extends HamburgerActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
         user = getIntent().getParcelableExtra("curUser");
-        mainLayout = (ConstraintLayout) findViewById(R.id.create_group_layout);
+        mainLayout = (ConstraintLayout) findViewById(R.id.create_event_layout);
         curGroup = getIntent().getParcelableExtra("curGroup");
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextLocation = (EditText) findViewById(R.id.editTextLocation);

@@ -58,8 +58,8 @@ public class GroupProfileActivity extends HamburgerActivity {
         }
         if (!isAdmin) {
             adminRequest.setText("Claim to be Admin");
-            memberList.setVisibility(View.INVISIBLE);
-            createEvent.setVisibility(View.INVISIBLE);
+            memberList.setVisibility(View.GONE);
+            createEvent.setVisibility(View.GONE);
         }
         groupName = (TextView) findViewById(R.id.textView2);
         groupName.setText(thisGroup.getGroupName());

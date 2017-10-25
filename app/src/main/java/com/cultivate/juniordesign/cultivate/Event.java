@@ -65,8 +65,10 @@ public class Event implements Parcelable{
         dest.writeString(eventName);
         dest.writeString(eventGroup);
         dest.writeString(location);
-        if (peopleAttending == null || peopleNotAttending == null) {
+        if (peopleAttending == null) {
             peopleAttending = new HashMap<String, Boolean>();
+        }
+        if (peopleNotAttending == null){
             peopleNotAttending = new HashMap<String, Boolean>();
         }
         dest.writeList(new ArrayList(peopleAttending.keySet()));

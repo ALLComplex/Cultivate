@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_create_event"
+    android:id="@+id/create_event_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false">
@@ -15,7 +15,7 @@
         android:layout_marginRight="0dp"
         android:layout_marginTop="-8dp"
         android:background="@color/that_green"
-        android:elevation="0dp"
+        android:elevation="12dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintHorizontal_bias="0.0"
@@ -32,24 +32,26 @@
         android:layout_height="30dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="12dp"
+        android:elevation="12dp"
+        android:onClick="openHamburgerBar"
         app:layout_constraintLeft_toLeftOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/transparent"
-        android:onClick="openHamburgerBar"/>
+        app:srcCompat="@android:color/transparent" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/that_green"
-        app:srcCompat="@drawable/ic_home"
+        android:layout_marginBottom="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/that_green"
+        android:elevation="12dp"
+        android:onClick="goToHome"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintRight_toRightOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        android:onClick="goToHome"
-        android:layout_marginBottom="8dp" />
+        app:srcCompat="@drawable/ic_home" />
 
     <TextView
         android:id="@+id/textView2"
@@ -65,26 +67,26 @@
         android:textColor="@android:color/black"
         android:textSize="30sp"
         android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintHorizontal_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp">
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -115,8 +117,8 @@
                 android:layout_weight="0.69"
                 android:ems="10"
                 android:fontFamily="casual"
-                android:inputType="textPersonName"
-                android:hint="Event Name" />
+                android:hint="Event Name"
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/editTextLocation"
@@ -125,8 +127,8 @@
                 android:layout_weight="0.69"
                 android:ems="10"
                 android:fontFamily="casual"
-                android:inputType="textNoSuggestions"
-                android:hint="Event Location" />
+                android:hint="Event Location"
+                android:inputType="textNoSuggestions" />
 
 
             <Button
@@ -134,8 +136,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="casual"
-                android:text="Create Event"
-                android:onClick="createEvent"/>
+                android:onClick="createEvent"
+                android:text="Create Event" />
 
 
         </LinearLayout>

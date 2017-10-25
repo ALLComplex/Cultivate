@@ -72,7 +72,9 @@ public class MyEventsActivity extends HamburgerActivity {
      */
     private void addToEventList(Event e) {
         events.add(e);
-        eventTextView.setVisibility(View.INVISIBLE);
+        if (eventTextView.getVisibility() == View.VISIBLE) {
+            eventTextView.setVisibility(View.GONE);
+        }
     }
 
     private void addButton(String eventName) {
