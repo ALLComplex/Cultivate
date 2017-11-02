@@ -9,7 +9,7 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="56dp"
         android:background="@color/that_green"
         android:elevation="12dp"
@@ -34,7 +34,8 @@
         android:onClick="openHamburgerBar"
         app:layout_constraintLeft_toLeftOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/transparent" />
+        app:srcCompat="@android:color/transparent"
+        android:layout_marginStart="12dp" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -50,7 +51,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintRight_toRightOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_home" />
+        app:srcCompat="@drawable/ic_home"
+        android:layout_marginEnd="8dp" />
 
 
     <TextView
@@ -61,7 +63,6 @@
     android:layout_marginRight="8dp"
     android:layout_marginTop="8dp"
     android:layout_weight="0.69"
-    android:fontFamily="casual"
     android:text="Event Page"
     android:textAlignment="center"
     android:textColor="@android:color/black"
