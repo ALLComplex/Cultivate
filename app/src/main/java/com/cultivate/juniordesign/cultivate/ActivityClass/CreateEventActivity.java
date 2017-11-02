@@ -1,10 +1,17 @@
 package com.cultivate.juniordesign.cultivate.ActivityClass;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cultivate.juniordesign.cultivate.Account;
@@ -18,7 +25,7 @@ import com.cultivate.juniordesign.cultivate.R;
  */
 
 public class CreateEventActivity extends HamburgerActivity {
-    private Group aGroup = null;
+    private Group curGroup = null;
     private EditText editTextName;
     private EditText editTextLocation;
 
@@ -27,40 +34,92 @@ public class CreateEventActivity extends HamburgerActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
         user = getIntent().getParcelableExtra("curUser");
-        mainLayout = (ConstraintLayout) findViewById(R.id.create_group_layout);
-        aGroup = getIntent().getParcelableExtra("curGroup");
-
+        mainLayout = (ConstraintLayout) findViewById(R.id.create_event_layout);
+        curGroup = getIntent().getParcelableExtra("curGroup");
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextLocation = (EditText) findViewById(R.id.editTextLocation);
+        setSpinnerAdapter(R.id.months, R.array.months);
+        setSpinnerAdapter(R.id.days, R.array.days);
+        setSpinnerAdapter(R.id.years, R.array.years);
+        setSpinnerAdapter(R.id.startHour, R.array.hours);
+        setSpinnerAdapter(R.id.endHour, R.array.hours);
+        setSpinnerAdapter(R.id.endMinute, R.array.minutes);
+        setSpinnerAdapter(R.id.startMinute, R.array.minutes);
+        setSpinnerAdapter(R.id.startAM, R.array.amPm);
+        setSpinnerAdapter(R.id.endAm, R.array.amPm);
     }
 
+    /**
+     *
+     * @param v
+     */
     public void createEvent(View v) {
         //TODO: check if group name exists.
         String name = editTextName.getText().toString();
         String location = editTextLocation.getText().toString();
-        Event event = new Event(name, aGroup.getGroupName(), location);
+        Event event = new Event(name, curGroup.getGroupName(), location);
         user.attendEvent(event);
-        aGroup.addEvent(event);
-        FirebaseHandler db = new FirebaseHandler();
-        db.pushAccountChange(user);
-        db.pushEventChange(event);
-        db.pushGroupChange(aGroup);
+        curGroup.addEvent(event);
+        updateUser(user);
+        updateEvent(event);
+        updateGroup(curGroup);
         goToEventActivity(v, event);
-       // goToGroupProfile(v, aGroup);
     }
 
-    private void goToGroupProfile(View v, Group g) {
-        Intent group = new Intent(this, GroupProfileActivity.class);
-        group.putExtra("curGroup", g);
-        group.putExtra("curUser", user);
-        startActivity(group);
+    /**
+     *
+     * @param v
+     * @param e
+     */
+    public void goToEventActivity(View v, Event e) {
+        Intent event = new Intent(this, EventActivity.class);
+        event.putExtra("curUser", user);
+        event.putExtra("curEvent", e);
+        startActivity(event);
     }
 
-    private void goToEventActivity(View v, Event e) {
-        Intent group = new Intent(this, EventActivity.class);
-        group.putExtra("curUser", user);
-        group.putExtra("curEvent", e);
-        startActivity(group);
+    /**
+     *
+     * @param v
+     */
+    public void allDayBoxClicked(View v){
+        if (((CheckBox) v).isChecked()) {
+            setTimeGone();
+        } else {
+            setTimeVisible();
+        }
+    }
+
+    /**
+     *
+     */
+    public void setTimeGone(){
+        ((TextView) findViewById(R.id.textStart)).setVisibility(View.GONE);
+        ((TextView) findViewById(R.id.textEnd)).setVisibility(View.GONE);
+        ((TableLayout)findViewById(R.id.tableEndTime)).setVisibility(View.GONE);
+        ((TableLayout)findViewById(R.id.tableStartTime)).setVisibility(View.GONE);
+    }
+
+    /**
+     *
+     */
+    public void setTimeVisible(){
+        ((TextView) findViewById(R.id.textStart)).setVisibility(View.VISIBLE);
+        ((TextView) findViewById(R.id.textEnd)).setVisibility(View.VISIBLE);
+        ((TableLayout)findViewById(R.id.tableEndTime)).setVisibility(View.VISIBLE);
+        ((TableLayout)findViewById(R.id.tableStartTime)).setVisibility(View.VISIBLE);
+    }
+
+    /**
+     *
+     * @param spinnerView
+     * @param resourceView
+     */
+    private void setSpinnerAdapter(int spinnerView, int resourceView) {
+        Spinner spinner = (Spinner) findViewById(spinnerView);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(resourceView));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
     }
 
 }

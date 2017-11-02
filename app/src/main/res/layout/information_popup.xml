@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/that_logo_brown">
+    android:background="@color/that_logo_brown"
+    android:elevation="12dp">
 
     <TextView
         android:id="@+id/about"
@@ -38,15 +38,15 @@
         android:id="@+id/groupName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/allWords"
+        android:layout_alignStart="@+id/allWords"
+        android:layout_below="@+id/allWords"
+        android:layout_marginTop="16dp"
         android:fontFamily="casual"
         android:text="Coolio Inc. - 7150"
         android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="18sp"
-        android:textStyle="italic"
-        android:layout_below="@+id/allWords"
-        android:layout_alignLeft="@+id/allWords"
-        android:layout_alignStart="@+id/allWords"
-        android:layout_marginTop="16dp" />
+        android:textStyle="italic" />
 
 </RelativeLayout>

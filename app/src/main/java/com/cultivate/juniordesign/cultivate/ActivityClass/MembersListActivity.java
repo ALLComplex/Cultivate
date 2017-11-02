@@ -27,7 +27,6 @@ import java.util.Set;
 
 public class MembersListActivity extends HamburgerActivity {
     private Group thisGroup = null;
-    FirebaseHandler db;
     TextView title;
     TextView list;
     Set<Account> members = new HashSet<>();
@@ -44,8 +43,7 @@ public class MembersListActivity extends HamburgerActivity {
         list = (TextView) findViewById(R.id.list);
         listS = "";
         for (String str:  thisGroup.getGroupMembers().keySet()) {
-            FirebaseHandler db = new FirebaseHandler();
-            db.getAccount(str, new GetDataListener(){
+            database.getAccount(str, new GetDataListener(){
                 @Override
                 public void onStart() {
                     Log.d("STARTED", "Started");
@@ -63,7 +61,6 @@ public class MembersListActivity extends HamburgerActivity {
                     }
 
                 }
-
                 @Override
                 public void onFailed(DatabaseError databaseError) {
                     Log.d("FAILURE", "fail");

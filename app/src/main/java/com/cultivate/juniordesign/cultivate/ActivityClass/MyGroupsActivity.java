@@ -24,7 +24,6 @@ import java.util.Map;
 /**
  * Created by Paul on 9/10/2017.
  */
-
 public class MyGroupsActivity extends HamburgerActivity {
 
     @Override
@@ -46,8 +45,7 @@ public class MyGroupsActivity extends HamburgerActivity {
                 public void onClick(View v) {
                     //find group by
                     String groupText = ((Button) v).getText().toString();
-                    FirebaseHandler db = new FirebaseHandler();
-                    db.getGroup(groupText, new GetDataListener(){
+                    database.getGroup(groupText, new GetDataListener(){
                         @Override
                         public void onStart() {
                             Log.d("STARTED", "Started");
@@ -80,11 +78,8 @@ public class MyGroupsActivity extends HamburgerActivity {
             lastButton = curButton;
         }
         TextView groupTextView = (TextView) findViewById(R.id.textView);
-        if (lastButton == null) {
-            groupTextView.setText("You are not a part of any groups");
-        } else {
-            groupTextView.setText("");
-            groupTextView.setVisibility(View.INVISIBLE);
+        if (lastButton != null) {
+            groupTextView.setVisibility(View.GONE);
         }
 
 
@@ -92,12 +87,20 @@ public class MyGroupsActivity extends HamburgerActivity {
         //adminTextView.setVisibility(output);
     }
 
+    /**
+     * Starts the create group activity where the user may create a new group
+     * @param v the view which is automatically passed in by the button
+     */
     public void goToCreateGroup(View v) {
         Intent group = new Intent(this, CreateGroupActivity.class);
         group.putExtra("curUser", user);
         startActivity(group);
     }
 
+    /**
+     * Starts the create
+     * @param v the view which is automatically passed in by the button
+     */
     public void goToJoinGroup(View v) {
         Intent group = new Intent(this, JoinGroupActivity.class);
         group.putExtra("curUser", user);

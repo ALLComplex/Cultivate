@@ -37,8 +37,8 @@ public class CreateGroupActivity extends HamburgerActivity {
         Group group = new Group(name, location);
         user.becomeAdmin(group);
         user.becomeMember(group);
-        FirebaseHandler db = new FirebaseHandler();
-        db.pushGroupChange(group);
+        updateGroup(group);
+        updateUser(user);
         goToGroupProfile(v, group);
     }
 

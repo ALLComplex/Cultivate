@@ -1,61 +1,56 @@
 package com.cultivate.juniordesign.cultivate.ActivityClass;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.TextView;
 
 import com.cultivate.juniordesign.cultivate.Account;
 import com.cultivate.juniordesign.cultivate.Event;
 import com.cultivate.juniordesign.cultivate.Group;
 import com.cultivate.juniordesign.cultivate.R;
 
+import org.w3c.dom.Text;
+
 /**
  * Created by Paul on 9/10/2017.
  */
 
 public class EventActivity extends HamburgerActivity {
-    private Event event = null;
-    TextView textView2;
+    Event event;
+    TextView textTitle;
+    TextView textName;
     TextView textLocation;
     TextView textGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_event);
         user = getIntent().getParcelableExtra("curUser");
         mainLayout = (ConstraintLayout) findViewById(R.id.event_layout);
         event = getIntent().getParcelableExtra("curEvent");
-        setContentView(R.layout.activity_event);
-        textView2 = (TextView) findViewById(R.id.eventName);
-        textView2.setText(event.getEventName());
+        textTitle = (TextView) findViewById(R.id.textView2);
+        textTitle.setText(event.getEventName());
+        textName = (TextView) findViewById(R.id.eventName);
+        textName.setText(event.getEventName());
         textLocation = (TextView) findViewById(R.id.eventLocation);
         textLocation.setText(event.getLocation());
-        textLocation = (TextView) findViewById(R.id.eventGroup);
-        textLocation.setText(event.getEventGroup());
-        //textLocation = (TextView) findViewById(R.id.eventTime);
-        //textLocation.setText(event.);
-    }
-
-    /**
-     * Queries the database to determine if the user is an admin for the group this event is a part of.
-     * If so, return true
-     * @return boolean whether or not the user is an admin
-     */
-    private boolean checkIfAdmin() {
-        return false;
+        textGroup = (TextView) findViewById(R.id.eventGroup);
+        textGroup.setText(event.getEventGroup());
     }
 
     public void goToMarkAsGoing(View v) {
         if (event.getPeopleAttending().containsKey(user.getName())) {
-            //throw a toast "you are already attending the event!!"
+            //throw a toast\ "you are already attending the event!!"
             Log.d("Already Attending", "User is already attending this event");
             return;
         } else {
             user.attendEvent(event);
+            updateUser(user);
+            updateEvent(event);
             Log.d("Attending", "User is attending this event");
         }
     }
@@ -66,6 +61,8 @@ public class EventActivity extends HamburgerActivity {
             return;
         } else {
             user.notAttendEvent(event);
+            updateUser(user);
+            updateEvent(event);
             Log.d("Not Attending", "User is not attending this event");
 
         }

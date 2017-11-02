@@ -58,8 +58,8 @@ public class GroupProfileActivity extends HamburgerActivity {
         }
         if (!isAdmin) {
             adminRequest.setText("Claim to be Admin");
-            memberList.setVisibility(View.INVISIBLE);
-            createEvent.setVisibility(View.INVISIBLE);
+            memberList.setVisibility(View.GONE);
+            createEvent.setVisibility(View.GONE);
         }
         groupName = (TextView) findViewById(R.id.textView2);
         groupName.setText(thisGroup.getGroupName());
@@ -69,8 +69,7 @@ public class GroupProfileActivity extends HamburgerActivity {
         eventInfo = (TextView) findViewById(R.id.eventListText);
         eventListInfo = "";
         for (String event : thisGroup.getEvents().keySet()) {
-            FirebaseHandler db = new FirebaseHandler();
-            db.getEvent(event, new GetDataListener() {
+            database.getEvent(event, new GetDataListener() {
                 @Override
                 public void onStart() {
                     Log.d("STARTED", "Started");
@@ -135,11 +134,10 @@ public class GroupProfileActivity extends HamburgerActivity {
 
             HashMap<String, Boolean> groupList = (HashMap) user.getMemberGroups();
             groupList.remove(thisGroup.getGroupName());
-            user.setMemberGroups(memberList);
+            user.setMemberGroups(groupList);
 
-            final FirebaseHandler db = new FirebaseHandler();
-            db.pushAccountChange(user);
-            db.pushGroupChange(thisGroup);
+            updateUser(user);
+            updateGroup(thisGroup);
 
             Intent group = new Intent(this, MyGroupsActivity.class);
             group.putExtra("curUser", user);
@@ -151,9 +149,8 @@ public class GroupProfileActivity extends HamburgerActivity {
         thisGroup.addMember(user);
         user.becomeMember(thisGroup);
 
-        final FirebaseHandler db = new FirebaseHandler();
-        db.pushAccountChange(user);
-        db.pushGroupChange(thisGroup);
+        updateUser(user);
+        updateGroup(thisGroup);
 
         Intent group = new Intent(this, GroupProfileActivity.class);
         group.putExtra("curUser", user);
@@ -167,9 +164,8 @@ public class GroupProfileActivity extends HamburgerActivity {
         } else {
             notImplemented(v);
         }
-        final FirebaseHandler db = new FirebaseHandler();
-        db.pushAccountChange(user);
-        db.pushGroupChange(thisGroup);
+        updateUser(user);
+        updateGroup(thisGroup);
     }
 
     public void becomeAdmin() {

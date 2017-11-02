@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:background="@color/that_green"
-        android:elevation="0dp"
+        android:elevation="12dp"
         android:hapticFeedbackEnabled="true"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -30,24 +30,29 @@
         android:layout_height="30dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="12dp"
+        android:elevation="24dp"
+        android:onClick="openHamburgerBar"
         app:layout_constraintLeft_toLeftOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:color/transparent"
-        android:onClick="openHamburgerBar"/>
+        android:layout_marginStart="12dp" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/that_green"
-        app:srcCompat="@drawable/ic_home"
+        android:layout_marginBottom="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/that_green"
+        android:elevation="12dp"
+        android:onClick="goToHome"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintRight_toRightOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        android:onClick="goToHome"
-        android:layout_marginBottom="8dp" />
+        app:srcCompat="@drawable/ic_home"
+        android:layout_marginEnd="8dp" />
 
 
     <TextView
@@ -58,7 +63,6 @@
     android:layout_marginRight="8dp"
     android:layout_marginTop="8dp"
     android:layout_weight="0.69"
-    android:fontFamily="casual"
     android:text="Event Page"
     android:textAlignment="center"
     android:textColor="@android:color/black"

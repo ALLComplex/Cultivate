@@ -20,7 +20,7 @@ import org.w3c.dom.Text;
  * Created by Paul on 9/10/2017.
  */
 
-public class ProfileActivity extends HamburgerActivity {
+public class MyProfileActivity extends HamburgerActivity {
     EditText profileName = null;
     TextView profileEmail = null;
     TextView profilePhone = null;
@@ -37,12 +37,16 @@ public class ProfileActivity extends HamburgerActivity {
         profilePhone = (TextView) findViewById(R.id.my_profile_phone);
         String email = user.getEmail();
         email = email.replace('_', '.');
-
         profilePhone.setText(user.getPhone());
         profileName.setText(user.getName());
         profileEmail.setText(email);
     }
 
+    /**
+     * Once user has clicked the update profile button this method begins
+     * Updates the name and phone to the ones currently typed in the text boxes
+     * @param v the View passed in on default by any button
+     */
     public void updateUser(View v) {
         String newName =  profileName.getText().toString();
         String newPhone = profilePhone.getText().toString();
@@ -50,13 +54,12 @@ public class ProfileActivity extends HamburgerActivity {
         user.setName(newName);
         user.setPhone(newPhone);
         //user.setEmail(newEmail);
-        FirebaseHandler db = new FirebaseHandler();
-        db.pushAccountChange(user);
+        updateUser(user);
         refreshPage(v);
     }
 
     public void refreshPage(View v) {
-        Intent group = new Intent(this, ProfileActivity.class);
+        Intent group = new Intent(this, MyProfileActivity.class);
         group.putExtra("curUser", user);
         startActivity(group);
     }

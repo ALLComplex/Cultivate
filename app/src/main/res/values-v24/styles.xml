@@ -5,12 +5,16 @@
         <item name="colorPrimary">@color/that_green</item>
         <item name="colorPrimaryDark">@color/that_dark_green</item>
         <item name="colorAccent">@color/that_logo_brown</item>
+        <item name="android:statusBarColor">@color/that_dark_green</item>
+        <item name="android:colorPrimary">@color/that_green</item>
         <item name="android:fontFamily">casual</item>
+        <item name="android:colorPrimaryDark">@color/that_logo_goldenyellow</item>
         <item name="android:colorBackground">@color/that_light_goldenyellow</item>
         <item name="android:colorForeground">@color/that_logo_goldenyellow</item>
         <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:navigationBarColor">?attr/colorPrimaryDark</item>
         <item name="android:textColorSecondaryInverse">@color/that_logo_goldenyellow</item>
-        <item name="android:windowBackground">?android:attr/textColorSecondaryInverse</item>
+        <item name="android:windowBackground">?android:attr/windowBackgroundFallback</item>
         <item name="android:textColorPrimaryInverse">@color/that_logo_goldenyellow</item>
     </style>
 </resources>
