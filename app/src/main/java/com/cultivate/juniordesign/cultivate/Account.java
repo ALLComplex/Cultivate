@@ -147,6 +147,10 @@ public class Account implements Parcelable {
         group.addAdmin(this);
     }
 
+    public void resignAdmin(Group group) {
+        group.removeAdmin( this);
+    }
+
     public void becomeMember(Group group){
         memberGroups.put(group.getGroupName(), Boolean.TRUE);
         group.addMember(this);

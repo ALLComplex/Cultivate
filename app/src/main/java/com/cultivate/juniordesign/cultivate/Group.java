@@ -134,6 +134,8 @@ public class Group implements Parcelable{
         groupAdmins.put(user.getEmail(), Boolean.TRUE);
     }
 
+    public void removeAdmin(Account user) { groupAdmins.remove((user.getEmail())); }
+
     public void addEvent(Event event) {
         events.put(event.getEventName(), Boolean.TRUE);
     }
