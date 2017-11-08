@@ -162,7 +162,7 @@ public class GroupProfileActivity extends HamburgerActivity {
         if (!isAdmin) {
             becomeAdmin();
         } else {
-            notImplemented(v);
+            resignAdmin();
         }
         updateUser(user);
         updateGroup(thisGroup);
@@ -173,6 +173,16 @@ public class GroupProfileActivity extends HamburgerActivity {
         adminRequest.setText("Resign as admin");
         memberList.setVisibility(View.VISIBLE);
         isAdmin = true;
+    }
+
+    public void resignAdmin(){
+        if (thisGroup.getGroupAdmins().size() > 1) {
+            user.resignAdmin(thisGroup);
+            adminRequest.setText("Claim to be admin");
+            isAdmin = false;
+        } else {
+            Toast.makeText(this, "Groups must have at least one admin!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void goToMemberList(View v) {
