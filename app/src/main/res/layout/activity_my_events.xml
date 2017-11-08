@@ -60,7 +60,6 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:text="My Events"
-        android:textAllCaps="false"
         android:textColor="@android:color/black"
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
