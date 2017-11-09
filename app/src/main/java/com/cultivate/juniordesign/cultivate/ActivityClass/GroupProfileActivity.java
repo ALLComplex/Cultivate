@@ -6,6 +6,7 @@ import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -31,6 +32,7 @@ public class GroupProfileActivity extends HamburgerActivity {
     boolean member = false;
     private Group thisGroup = null;
     private ArrayList<Event> events;
+    LinearLayout eventList;
     Button joinGroup;
     Button adminRequest;
     Button memberList;
@@ -53,6 +55,7 @@ public class GroupProfileActivity extends HamburgerActivity {
         adminRequest = (Button) findViewById(R.id.adminButton);
         memberList = (Button) findViewById(R.id.memberListButton);
         createEvent = (Button) findViewById(R.id.createEventButton);
+        eventList = (LinearLayout) findViewById(R.id.group_profile_event_list);
         if (member) {
             joinGroup.setText("Leave Group");
         }
@@ -68,42 +71,61 @@ public class GroupProfileActivity extends HamburgerActivity {
         events = new ArrayList<>();
         eventInfo = (TextView) findViewById(R.id.eventListText);
         eventListInfo = "";
+        Button lastButton = null;
+        Button curButton;
         for (String event : thisGroup.getEvents().keySet()) {
-            database.getEvent(event, new GetDataListener() {
+            curButton = new Button(this);
+            curButton.setId(event.hashCode());
+            curButton.setText(event);
+            curButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onStart() {
-                    Log.d("STARTED", "Started");
-                }
+                public void onClick(View v) {
+                    /*Group g = data.getValue(Group.class);
+                            if (g != null) {
+                                Log.d("ASSIGN TEMP VALUE", g.getLocation());
+                                Intent groupI = new Intent(MyGroupsActivity.this, GroupProfileActivity.class);
+                                groupI.putExtra("curGroup", g);
+                                groupI.putExtra("curUser", user);
+                                startActivity(groupI);
+                            } else {
+                                Toast.makeText(MyGroupsActivity.this, "This  group does not exist!", Toast.LENGTH_SHORT).show();
+                                Log.d("ASSIGN TEMP VALUE", "Failure");
+                            }
+                     */
+                    String eventText = ((Button) v).getText().toString();
+                    database.getEvent(eventText, new GetDataListener() {
+                        @Override
+                        public void onStart() {
+                            Log.d("STARTED", "Started");
+                        }
 
-                @Override
-                public void onSuccess(DataSnapshot data) {
-                    Event e = data.getValue(Event.class);
-                    if (e != null) {
-                        Log.d("ASSIGN TEMP VALUE", e.getLocation());
-                        addEvent(e);
-                    } else {
-                        Toast.makeText(GroupProfileActivity.this, "This event does not exist!", Toast.LENGTH_SHORT).show();
-                        Log.d("ASSIGN TEMP VALUE", "Failure");
-                    }
-                }
 
-                @Override
-                public void onFailed(DatabaseError databaseError) {
-                    Log.d("FAILURE", "fail");
+                        @Override
+                        public void onSuccess(DataSnapshot data) {
+                            Event e = data.getValue(Event.class);
+                            if (e != null) {
+                                Log.d("ASSIGN TEMP VALUE", e.getLocation());
+                                Toast.makeText(GroupProfileActivity.this, "Going to " + e.getEventName(), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(GroupProfileActivity.this, "This event does not exist!", Toast.LENGTH_SHORT).show();
+                                Log.d("ASSIGN TEMP VALUE", "Failure");
+                            }
+                        }
+
+                        @Override
+                        public void onFailed(DatabaseError databaseError) {
+                            Log.d("FAILURE", "fail");
+                        }
+                    });
+
                 }
             });
+            eventList.addView(curButton);
+            lastButton = curButton;
         }
-        if (events.size() == 0) {
-            eventInfo.setText("No upcoming events");
+        if (lastButton != null) {
+            eventInfo.setVisibility(View.GONE);
         }
-    }
-
-    public void addEvent(Event e) {
-        events.add(e);
-        eventListInfo = eventListInfo.concat("\nName: " + e.getEventName());
-        eventListInfo = eventListInfo.concat("\nLocation: " + e.getLocation());
-        eventListInfo = eventListInfo.concat("\n");
-        eventInfo.setText(eventListInfo);
     }
 
     private boolean checkIfAdmin() {
