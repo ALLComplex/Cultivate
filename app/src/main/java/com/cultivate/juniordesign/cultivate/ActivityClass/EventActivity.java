@@ -11,6 +11,7 @@ import com.cultivate.juniordesign.cultivate.Account;
 import com.cultivate.juniordesign.cultivate.Event;
 import com.cultivate.juniordesign.cultivate.Group;
 import com.cultivate.juniordesign.cultivate.R;
+import com.cultivate.juniordesign.cultivate.Utility;
 
 import org.w3c.dom.Text;
 
@@ -22,6 +23,7 @@ public class EventActivity extends HamburgerActivity {
     Event event;
     TextView textTitle;
     TextView textName;
+    TextView textTime;
     TextView textLocation;
     TextView textGroup;
 
@@ -34,6 +36,13 @@ public class EventActivity extends HamburgerActivity {
         event = getIntent().getParcelableExtra("curEvent");
         textTitle = (TextView) findViewById(R.id.textView2);
         textTitle.setText(event.getEventName());
+        textTime = (TextView) findViewById(R.id.eventTime);
+        if (event.getAllDay().equals("true")) {
+            textTime.setText(Utility.displayDateTime(Utility.digitToCalendar(event.getDayOfYear(), event.getYear(), event.getTimeDayStart())));
+        } else {
+            textTime.setText(Utility.displayDateTime(Utility.digitToCalendar(event.getDayOfYear(), event.getYear(), event.getTimeDayStart()),
+                    Utility.digitToCalendar(event.getDayOfYear(), event.getYear(), event.getTimeDayEnd())));
+        }
         textName = (TextView) findViewById(R.id.eventName);
         textName.setText(event.getEventName());
         textLocation = (TextView) findViewById(R.id.eventLocation);

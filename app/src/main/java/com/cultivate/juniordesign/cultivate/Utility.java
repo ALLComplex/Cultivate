@@ -1,8 +1,13 @@
-package com.cultivate.juniordesign;
+package com.cultivate.juniordesign.cultivate;
 
 
+import android.util.Log;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 
@@ -52,8 +57,9 @@ public class Utility {
      */
     public static String displayDateTime(Calendar date) {
         //event with no end time are considered all day
-        SimpleDateFormat format = new SimpleDateFormat("MMMMM dd, yyyy");
-        return format.format(date.getTime());
+        SimpleDateFormat format = new SimpleDateFormat("MMMM dd, yyyy");
+        Log.d("ALL DAY TIME STRING", format.format(date.getTime()));
+        return format.format(date.getTime()) + ", All Day";
     }
 
     /**
@@ -66,15 +72,16 @@ public class Utility {
         String str = "";
         SimpleDateFormat format = new SimpleDateFormat("MMMM d, yyyy h:mm aa");
         if (start.get(Calendar.YEAR) != end.get(Calendar.YEAR) || (start.get(Calendar.MONTH) != end.get(Calendar.MONTH)) || (start.get(Calendar.DAY_OF_MONTH) != end.get(Calendar.DAY_OF_MONTH))) {
-            str.concat(format.format(start.getTime()));
-            str.concat(" to ");
-            str.concat(format.format(end.getTime()));
+            str += format.format(start.getTime());
+            str += " to ";
+            str += format.format(end.getTime());
         } else {
-            str.concat(format.format(start.getTime()));
-            str.concat(" to ");
+            str += format.format(start.getTime());
+            str += " to ";
             SimpleDateFormat timeOnly = new SimpleDateFormat("h:mm aa");
-            str.concat(timeOnly.format(end.getTime()));
+            str += timeOnly.format(end.getTime());
         }
+        Log.d("TIMED STRING", str);
         return str;
     }
 
@@ -121,9 +128,26 @@ public class Utility {
      * @param amPm
      * @return
      */
-    public static Calendar userInputTOCalendar(String month, int day, int year, int hour, int minute, String amPm) {
+    public static Calendar userInputToCalendar(String month, int day, int year, int hour, int minute, String amPm) {
         Calendar date = Calendar.getInstance();
-        //TODO actually set date to given parameters
+        Calendar cal = Calendar.getInstance();
+        Date aDate;
+        try {
+            aDate = new SimpleDateFormat("MMM", Locale.ENGLISH).parse(month);
+        } catch (ParseException e) {
+            Log.d("BAD MONTH", month + " is not a valid month!");
+            return null;
+        }
+        cal.setTime(aDate);
+        if (amPm.equals("pm")) { //CHECK that string is accurate; check that hour is necessary
+            hour += 12;
+        }
+        int intMonth = cal.get(Calendar.MONTH);
+        if (amPm != null) { //not allDay
+            date.set(year, intMonth, day, hour, minute);
+        } else { //allDay
+            date.set(year, intMonth, day);
+        }
         return date;
     }
  }
