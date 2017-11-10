@@ -23,8 +23,8 @@ public class Utility {
 
     /**
      *
-     * @param begin
-     * @param end
+     * @param begin start date for the calendar
+     * @param end terminating date for the calendar
      * @return
      */
     public static String relevantToCurrentTime(Calendar begin, Calendar end) {
