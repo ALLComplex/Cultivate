@@ -1,7 +1,10 @@
 package com.cultivate.juniordesign.cultivate.ActivityClass;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 import android.view.View;
@@ -184,7 +187,18 @@ public class GroupProfileActivity extends HamburgerActivity {
         if (!isAdmin) {
             becomeAdmin();
         } else {
-            resignAdmin();
+            //resignAdmin();
+            new AlertDialog.Builder(this)
+                .setTitle("Admin Resign")
+                .setMessage("Do you really want to resign from your admin position?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        resignAdmin();
+                    }})
+                .setNegativeButton(android.R.string.no, null)
+                .show();
         }
         updateUser(user);
         updateGroup(thisGroup);
@@ -194,6 +208,7 @@ public class GroupProfileActivity extends HamburgerActivity {
         user.becomeAdmin(thisGroup);
         adminRequest.setText("Resign as admin");
         memberList.setVisibility(View.VISIBLE);
+        createEvent.setVisibility(View.VISIBLE);
         isAdmin = true;
     }
 
@@ -202,6 +217,10 @@ public class GroupProfileActivity extends HamburgerActivity {
             user.resignAdmin(thisGroup);
             adminRequest.setText("Claim to be admin");
             isAdmin = false;
+            memberList.setVisibility(View.INVISIBLE);
+            createEvent.setVisibility(View.INVISIBLE);
+            updateGroup(thisGroup);
+            updateUser(user);
         } else {
             Toast.makeText(this, "Groups must have at least one admin!", Toast.LENGTH_SHORT).show();
         }
