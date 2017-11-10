@@ -2,7 +2,9 @@ package com.cultivate.juniordesign.cultivate;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
+import com.cultivate.juniordesign.cultivate.ActivityClass.HamburgerActivity;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
@@ -145,6 +147,11 @@ public class Account implements Parcelable {
     public void becomeAdmin(Group group){
         manageGroups.put(group.getGroupName(), Boolean.TRUE);
         group.addAdmin(this);
+    }
+
+    public void resignAdmin(Group group) {
+        manageGroups.remove(group.getGroupName());
+        group.removeAdmin( this);
     }
 
     public void becomeMember(Group group){
