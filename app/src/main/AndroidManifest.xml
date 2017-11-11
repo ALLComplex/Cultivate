@@ -43,6 +43,7 @@
         <activity android:name=".ActivityClass.MembersListActivity"></activity>
         <activity android:name=".ActivityClass.CreateEventActivity"></activity>
         <activity android:name=".ActivityClass.MyEventsActivity"></activity>
+        <activity android:name=".ActivityClass.AttendanceActivity"></activity>
     </application>
 
 </manifest>
