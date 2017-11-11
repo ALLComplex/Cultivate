@@ -161,8 +161,8 @@ public class Account implements Parcelable {
 
     public void attendEvent(Event event) {
         if (eventsNotAttending.containsKey(event.getEventName())) {
-            event.getPeopleAttending().remove(this.getName());
-            this.getEventsAttending().remove(event.getEventName());
+            event.getPeopleNotAttending().remove(this.getEmail());
+            this.getEventsNotAttending().remove(event.getEventName());
         }
         eventsAttending.put(event.getEventName(), Boolean.TRUE);
         event.addPersonAttending(this);
@@ -170,8 +170,8 @@ public class Account implements Parcelable {
 
     public void notAttendEvent(Event event) {
         if (eventsAttending.containsKey(event.getEventName())) {
-            event.getPeopleNotAttending().remove(this.getName());
-            this.getEventsNotAttending().remove(event.getEventName());
+            event.getPeopleAttending().remove(this.getEmail());
+            this.getEventsAttending().remove(event.getEventName());
         }
         eventsNotAttending.put(event.getEventName(), Boolean.TRUE);
         event.addPersonNotAttending(this);

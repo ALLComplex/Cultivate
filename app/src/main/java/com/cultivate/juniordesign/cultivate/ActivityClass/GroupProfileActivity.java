@@ -108,7 +108,10 @@ public class GroupProfileActivity extends HamburgerActivity {
                             Event e = data.getValue(Event.class);
                             if (e != null) {
                                 Log.d("ASSIGN TEMP VALUE", e.getLocation());
-                                Toast.makeText(GroupProfileActivity.this, "Going to " + e.getEventName(), Toast.LENGTH_SHORT).show();
+                                Intent groupI = new Intent(GroupProfileActivity.this, EventActivity.class);
+                                groupI.putExtra("curUser", user);
+                                groupI.putExtra("curEvent", e);
+                                startActivity(groupI);
                             } else {
                                 Toast.makeText(GroupProfileActivity.this, "This event does not exist!", Toast.LENGTH_SHORT).show();
                                 Log.d("ASSIGN TEMP VALUE", "Failure");
