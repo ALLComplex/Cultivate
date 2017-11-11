@@ -2,6 +2,7 @@ package com.cultivate.juniordesign.cultivate;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import com.google.firebase.database.DatabaseReference;
 
@@ -133,6 +134,8 @@ public class Group implements Parcelable{
     public void addAdmin(Account user){
         groupAdmins.put(user.getEmail(), Boolean.TRUE);
     }
+
+    public void removeAdmin(Account user) { groupAdmins.remove((user.getEmail())); }
 
     public void addEvent(Event event) {
         events.put(event.getEventName(), Boolean.TRUE);
