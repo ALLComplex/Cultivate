@@ -1,5 +1,6 @@
 package com.cultivate.juniordesign.cultivate.ActivityClass;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.util.Log;
@@ -75,5 +76,12 @@ public class EventActivity extends HamburgerActivity {
             Log.d("Not Attending", "User is not attending this event");
 
         }
+    }
+
+    public void goToAttendance(View v) {
+        Intent attendance = new Intent(this, AttendanceActivity.class);
+        attendance.putExtra("curUser", user);
+        attendance.putExtra("curEvent", event);
+        startActivity(attendance);
     }
 }

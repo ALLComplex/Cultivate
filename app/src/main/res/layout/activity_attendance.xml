@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/event_layout"
+    android:id="@+id/attendance_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false">
@@ -11,9 +11,11 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="56dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="-8dp"
         android:background="@color/that_green"
         android:elevation="12dp"
-        android:hapticFeedbackEnabled="true"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintHorizontal_bias="0.0"
@@ -22,7 +24,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:logo="@mipmap/ic_launcher"
         app:navigationIcon="@drawable/ic_action_name"
-        app:title="View Event" />
+        app:title="Event Attendance" />
+
 
     <ImageView
         android:id="@+id/invisibleButton"
@@ -30,12 +33,11 @@
         android:layout_height="30dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="12dp"
-        android:elevation="24dp"
+        android:elevation="12dp"
         android:onClick="openHamburgerBar"
         app:layout_constraintLeft_toLeftOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/transparent"
-        android:layout_marginStart="12dp" />
+        app:srcCompat="@android:color/transparent" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -47,33 +49,29 @@
         android:background="@color/that_green"
         android:elevation="12dp"
         android:onClick="goToHome"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintRight_toRightOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_home"
-        android:layout_marginEnd="8dp" />
-
+        app:srcCompat="@drawable/ic_home" />
 
     <TextView
-    android:id="@+id/textView2"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_weight="0.69"
-    android:text="Event Page"
-    android:textAlignment="center"
-    android:textColor="@android:color/black"
-    android:textSize="36sp"
-    android:textStyle="bold"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/toolbar"
-    app:layout_constraintHorizontal_bias="0.0"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp" />
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="0.69"
+        android:fontFamily="casual"
+        android:text="Attended"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -105,72 +103,41 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/eventName"
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_weight="0.69"
-                android:fontFamily="casual"
-                android:text="Name"
+                android:lineSpacingExtra="10sp"
+                android:text="No one attended. "
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textColor="?attr/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/eventTime"
+            <LinearLayout
+                android:id="@+id/ButtonLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="0.69"
-                android:fontFamily="casual"
-                android:text="Time"
-                android:textAlignment="center"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/eventLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.69"
-                android:fontFamily="casual"
-                android:text="Location"
-                android:textAlignment="center"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/eventGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.69"
-                android:fontFamily="casual"
-                android:text="GroupName"
-                android:textAlignment="center"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/attendingButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.69"
-                android:text="Mark as going"
-                android:fontFamily="casual"
-                android:onClick="goToMarkAsGoing"/>
-
-            <Button
-                android:id="@+id/notAttendingButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.69"
-                android:text="Mark as not going"
-                android:fontFamily="casual"
-                android:onClick="goToMarkAsNotGoing"/>
-            <Button
-                android:id="@+id/attendanceButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.69"
-                android:text="checkAttendance"
-                android:fontFamily="casual"
-                android:onClick="goToAttendance"/>
-
+                android:orientation="vertical">
+            </LinearLayout>
         </LinearLayout>
+
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
