@@ -14,7 +14,7 @@
         android:fontFamily="casual"
         android:text="About Cultivate:"
         android:textAlignment="center"
-        android:textAllCaps="false"
+
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="36dp"
         android:textStyle="bold" />

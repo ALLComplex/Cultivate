@@ -61,7 +61,7 @@
         android:fontFamily="casual"
         android:onClick="goToMyEvents"
         android:text="View My Events"
-        android:textAllCaps="false"
+
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -77,7 +77,7 @@
         android:fontFamily="casual"
         android:onClick="goToMyGroups"
         android:text="View My Groups "
-        android:textAllCaps="false"
+
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventButton" />
@@ -91,7 +91,7 @@
         android:fontFamily="casual"
         android:onClick="goToMyProfile"
         android:text="View My Profile"
-        android:textAllCaps="false"
+
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/groupButton" />
