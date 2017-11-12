@@ -17,7 +17,7 @@
         android:fontFamily="casual"
         android:text="Quick Tools"
         android:textAlignment="textStart"
-        android:textAllCaps="false"
+
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="36sp"
         android:textStyle="bold" />
@@ -41,7 +41,7 @@
         android:onClick="goToMyGroups"
         android:text="Group Page"
         android:textAlignment="viewStart"
-        android:textAllCaps="false"
+
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="24sp" />
 
