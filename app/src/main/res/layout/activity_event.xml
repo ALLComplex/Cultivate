@@ -149,26 +149,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.69"
-                android:text="Mark as going"
                 android:fontFamily="casual"
-                android:onClick="goToMarkAsGoing"/>
+                android:onClick="goToMarkAsGoing"
+                android:text="Mark as going"
+                android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/notAttendingButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.69"
-                android:text="Mark as not going"
                 android:fontFamily="casual"
-                android:onClick="goToMarkAsNotGoing"/>
+                android:onClick="goToMarkAsNotGoing"
+                android:text="Mark as not going"
+                android:textAllCaps="false" />
+
             <Button
                 android:id="@+id/attendanceButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.69"
-                android:text="checkAttendance"
                 android:fontFamily="casual"
-                android:onClick="goToAttendance"/>
+                android:onClick="goToAttendance"
+                android:text="Check Attendance"
+                android:textAllCaps="false" />
 
         </LinearLayout>
     </ScrollView>

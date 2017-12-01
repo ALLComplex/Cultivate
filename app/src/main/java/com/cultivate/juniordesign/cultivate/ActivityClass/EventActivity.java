@@ -50,6 +50,7 @@ public class EventActivity extends HamburgerActivity {
         textLocation.setText(event.getLocation());
         textGroup = (TextView) findViewById(R.id.eventGroup);
         textGroup.setText(event.getEventGroup());
+        //TODO if it is during or after event, change from mark as going to mark as attended
     }
 
     public void goToMarkAsGoing(View v) {

@@ -16,11 +16,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cultivate.juniordesign.cultivate.Account;
+import com.cultivate.juniordesign.cultivate.FirebaseHandler;
+import com.cultivate.juniordesign.cultivate.GetDataListener;
+import com.cultivate.juniordesign.cultivate.Group;
 import com.cultivate.juniordesign.cultivate.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -42,6 +47,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private View mProgressView;
     private View mRegistrationFormView;
+    private Account user;
+    protected FirebaseHandler database = new FirebaseHandler();
 
     public final String successCreate = "You have successfully created a new account. Now login with your new information";
 
@@ -124,8 +131,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                 Toast.makeText(RegistrationActivity.this, failCreate, Toast.LENGTH_SHORT).show();
                                 return;
                             }
-                            Account newUser = new Account(name, email.replace('.', '_'), phone);
-
+                            final Account newUser = new Account(name, email.replace('.', '_'), phone);
                             //Group newGroup = new Group("Psi Upsilon", "Atlanta, GA", newUser.getName());
                             //newUser.becomeAdmin(newGroup);
                             mDatabase.child("users").child(newUser.getEmail()).setValue(newUser);
@@ -182,8 +188,33 @@ public class RegistrationActivity extends AppCompatActivity {
         return password.length() > 4;
     }
 
+    public void becomeMember(Group g){
+        user.becomeMember(g);
+        database.pushAccountChange(user);
+    }
+    public void launch(Account u){
+        user = u;
+        database.getGroup("GT Students", new GetDataListener(){
+            @Override
+            public void onStart() {
+                Log.d("STARTED", "Started");
+            }
 
-    public void launch(Account user){
+            @Override
+            public void onSuccess(DataSnapshot data) {
+                Group g = data.getValue(Group.class);
+                if (g != null) {
+                    Log.d("ASSIGN TEMP VALUE", g.getLocation());
+                    becomeMember(g);
+                } else {
+                    Log.d("ASSIGN TEMP VALUE", "Failure");
+                }
+            }
+            @Override
+            public void onFailed(DatabaseError databaseError) {
+                Log.d("FAILURE", "fail");
+            }
+        });
         Intent login = new Intent(this, LoginActivity.class);
         login.putExtra("curUser", user);
         startActivity(login);
