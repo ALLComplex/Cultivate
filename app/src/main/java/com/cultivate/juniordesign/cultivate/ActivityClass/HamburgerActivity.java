@@ -3,6 +3,7 @@ package com.cultivate.juniordesign.cultivate.ActivityClass;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,11 @@ import android.widget.Toast;
 import com.cultivate.juniordesign.cultivate.Account;
 import com.cultivate.juniordesign.cultivate.Event;
 import com.cultivate.juniordesign.cultivate.FirebaseHandler;
+import com.cultivate.juniordesign.cultivate.GetDataListener;
 import com.cultivate.juniordesign.cultivate.Group;
 import com.cultivate.juniordesign.cultivate.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
 /**
@@ -97,6 +101,43 @@ public class HamburgerActivity extends AppCompatActivity {
         event.putExtra("curUser", user);
         startActivity(event);
     }
+
+    /**
+     *
+     */
+    public void goToGTStudents(View v) {
+        database.getGroup("GT Students", new GetDataListener(){
+            @Override
+            public void onStart() {
+                Log.d("STARTED", "Started");
+            }
+
+            @Override
+            public void onSuccess(DataSnapshot data) {
+                Group g = data.getValue(Group.class);
+                if (g != null) {
+                    Log.d("ASSIGN TEMP VALUE", g.getLocation());
+                    goToGroup(g);
+                } else {
+                    Log.d("ASSIGN TEMP VALUE", "Failure");
+                }
+
+            }
+
+            @Override
+            public void onFailed(DatabaseError databaseError) {
+                Log.d("FAILURE", "fail");
+            }
+        });
+    }
+
+    public void goToGroup(Group g){
+        Intent groupI = new Intent(this, GroupProfileActivity.class);
+        groupI.putExtra("curGroup", g);
+        groupI.putExtra("curUser", user);
+        startActivity(groupI);
+    }
+
 
     /**
      * Updates the given user in the database

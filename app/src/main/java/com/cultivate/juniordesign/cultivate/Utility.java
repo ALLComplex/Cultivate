@@ -139,8 +139,10 @@ public class Utility {
             return null;
         }
         cal.setTime(aDate);
-        if (amPm.equals("pm")) { //CHECK that string is accurate; check that hour is necessary
-            hour += 12;
+        if (amPm != null) {
+            if (amPm.equals("pm")) { //CHECK that string is accurate; check that hour is necessary
+                hour += 12;
+            }
         }
         int intMonth = cal.get(Calendar.MONTH);
         if (amPm != null) { //not allDay
@@ -149,5 +151,52 @@ public class Utility {
             date.set(year, intMonth, day);
         }
         return date;
+    }
+
+    /**
+     *
+     * @param date
+     * @return
+     */
+    public static boolean isToday(Calendar date) {
+        Calendar now = Calendar.getInstance();
+        if (now == null || date == null)
+            return false;
+        return (now.get(Calendar.YEAR) == date.get(Calendar.YEAR)
+                && now.get(Calendar.DAY_OF_YEAR) == date.get(Calendar.DAY_OF_YEAR));
+    }
+
+    /**
+     *
+     * @param date
+     * @return
+     */
+    public static boolean isLaterThisWeek(Calendar date) {
+        Calendar now = Calendar.getInstance();
+        if (now == null || date == null)
+            return false;
+        //if it's earlier it's not later
+        if (now.get(Calendar.DAY_OF_YEAR) > date.get(Calendar.DAY_OF_YEAR)) {
+            return false;
+        }
+        return (now.get(Calendar.YEAR) == date.get(Calendar.YEAR)
+                && now.get(Calendar.WEEK_OF_YEAR) == date.get(Calendar.WEEK_OF_YEAR));
+    }
+
+    /**
+     *
+     * @param date
+     * @return
+     */
+    public static boolean isNextWeek(Calendar date) {
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.WEEK_OF_YEAR, 1);
+        if (now == null || date == null)
+            return false;
+        if (now.get(Calendar.DAY_OF_YEAR) > date.get(Calendar.DAY_OF_YEAR)) {
+            return false;
+        }
+        return (now.get(Calendar.YEAR) == date.get(Calendar.YEAR)
+                && now.get(Calendar.WEEK_OF_YEAR) == date.get(Calendar.WEEK_OF_YEAR));
     }
  }

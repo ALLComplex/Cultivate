@@ -159,6 +159,10 @@ public class Account implements Parcelable {
         group.addMember(this);
     }
 
+    public void leaveGroup(Group group){
+
+    }
+
     public void attendEvent(Event event) {
         if (eventsNotAttending.containsKey(event.getEventName())) {
             event.getPeopleNotAttending().remove(this.getEmail());

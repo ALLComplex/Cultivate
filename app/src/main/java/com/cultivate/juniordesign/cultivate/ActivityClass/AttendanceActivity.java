@@ -44,6 +44,7 @@ public class AttendanceActivity extends HamburgerActivity {
             buttonLayout.addView(curButton);
             lastButton = curButton;
         }
+        //TODO change to displaying names not emails
         TextView groupTextView = (TextView) findViewById(R.id.textView);
         if (lastButton != null) {
             groupTextView.setVisibility(View.GONE);
