@@ -113,7 +113,6 @@
                 android:layout_height="match_parent"
                 android:fontFamily="casual"
                 android:text="Join Group"
-                android:textAllCaps="false"
                 android:onClick="goToJoinGroup"/>
 
 
