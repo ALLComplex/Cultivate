@@ -139,8 +139,10 @@ public class Utility {
             return null;
         }
         cal.setTime(aDate);
-        if (amPm.equals("pm")) { //CHECK that string is accurate; check that hour is necessary
-            hour += 12;
+        if (amPm != null) {
+            if (amPm.equals("pm")) { //CHECK that string is accurate; check that hour is necessary
+                hour += 12;
+            }
         }
         int intMonth = cal.get(Calendar.MONTH);
         if (amPm != null) { //not allDay
